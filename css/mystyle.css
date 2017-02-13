@@ -1,0 +1,24 @@
+body
+{
+	bgcolor:#666666;
+}
+H3 {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Tahoma, Helvetica, sans-serif, Arial; TEXT-DECORATION: none
+}
+H4 {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Tahoma, Helvetica, sans-serif, Arial; TEXT-DECORATION: none
+}
+/*a:link {color:#FF0000;FONT-FAMILY: Tahoma;text-decoration:none;} */   /* unvisited link */
+/*a:visited {color:#FF0000;FONT-FAMILY: Tahoma;text-decoration:none;}*/ /* visited link */
+/*a:hover {color:#FF0000;FONT-FAMILY: Tahoma;text-decoration:none;}  */ /* mouse over link */
+/*a:active {color:#FF0000;FONT-FAMILY: Tahoma;text-decoration:none;} */  /* selected link */
+A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #006400; TEXT-DECORATION: underline
+}
+LINK {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+

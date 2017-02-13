@@ -1,0 +1,43 @@
+		<Context path="/EMuster" docBase="EMuster"
+				debug="5" reloadable="true" crossContext="true">
+			<Resource name="jdbc/EMuster"
+				auth="Container"
+				type="javax.sql.DataSource"
+				driverClassName="com.ibm.db2.jcc.DB2Driver"
+				url="jdbc:db2://aspire515:50000/eshakthi:currentSchema=ESDEFAULT;resultSetHoldability=1;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;"
+				username="emuster_dev"
+				password="db@dev123"
+				maxIdle="10" maxWait="5000" maxActive="20"/>
+			<Resource name="jdbc/Biometric"
+				auth="Container"
+				type="javax.sql.DataSource"
+				driverClassName="com.ibm.db2.jcc.DB2Driver"
+				url="jdbc:db2://aspire515:50000/eshakthi:currentSchema=ESDEFAULT;resultSetHoldability=1;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;"
+				username="emuster_dev"
+				password="db@dev123"
+				maxIdle="10" maxWait="5000" maxActive="20"/>
+			<Resource name="jdbc/Textual"
+				auth="Container"
+				type="javax.sql.DataSource"
+				driverClassName="com.ibm.db2.jcc.DB2Driver"
+				url="jdbc:db2://aspire515:50000/eshakthi:currentSchema=ESDEFAULT;resultSetHoldability=1;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;"
+				username="emuster_dev"
+				password="db@dev123"
+				maxIdle="10" maxWait="5000" maxActive="20"/>
+			<Resource name="jdbc/Merged"
+				auth="Container"
+				type="javax.sql.DataSource"
+				driverClassName="com.ibm.db2.jcc.DB2Driver"
+				url="jdbc:db2://aspire515:50000/eshakthi:currentSchema=ESDEFAULT;resultSetHoldability=1;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;"
+				username="emuster_dev"
+				password="db@dev123"
+				maxIdle="10" maxWait="5000" maxActive="20"/>
+			<Resource name="jdbc/Clean"
+				auth="Container"
+				type="javax.sql.DataSource"
+				driverClassName="com.ibm.db2.jcc.DB2Driver"
+				url="jdbc:db2://aspire515:50000/eshakthi:currentSchema=ESDEFAULT;resultSetHoldability=1;fullyMaterializeLobData=true;fullyMaterializeInputStreams=true;progressiveStreaming=2;"
+				username="emuster_dev"
+				password="db@dev123"
+				maxIdle="10" maxWait="5000" maxActive="20"/>
+		</Context>

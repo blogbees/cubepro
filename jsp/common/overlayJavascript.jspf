@@ -1,0 +1,49 @@
+<!-- jQuery Overlay files -->
+<script src="<%=request.getContextPath() %>/scripts/jquery/jquery.overlay-1-0-4.js" type="text/javascript"></script>
+	
+<!-- jQuery expose files -->
+<script src="<%=request.getContextPath() %>/scripts/jquery/jquery.expose-1-0-3.js" type="text/javascript"></script>
+<script language="JavaScript" type="text/javascript">
+<!--
+	$(function() {
+		var api = $("#overlay").overlay({
+										api:true,
+										closeOnClick: false,
+										finish : {
+											top: 'center',
+											left: 'center'
+										},
+										onLoad: function() {
+											$("#overlay").draggable({handle: $(".form-heading")});
+											$(".form-heading").css({ cursor: 'move' });
+										},
+										onBeforeClose: function() {
+											$(".form-heading").css({ cursor: 'default' });
+										},  
+										// custom expose settings 
+										expose: { 
+											color: '#BAD0DB', 
+											opacity: 0.5,
+											closeOnClick: false,
+											closeSpeed: 500
+										}
+								    });
+		//Open overlay										    
+		window.openOverlay = function() {
+			api.load();
+		}
+		//Make the overlay draggable							    
+		$('#overlay').live('drag', function(event, ui) {
+ 			dragOverlay();
+		});
+		window.closeOverlay = function() {
+			api.close();
+		}
+	});
+	function dragOverlay() {
+		var positionLeft = $("#overlay").offset().left;
+		var positionRight = $("#overlay").offset().top;
+		$("#moveableImage").css( { "left": positionLeft + "px", "top" : positionRight + "px" } );
+	}
+-->
+</script>

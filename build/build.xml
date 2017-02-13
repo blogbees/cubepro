@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+
+<project name="cubepro" default="war" basedir=".">
+	<property file="build.properties" />
+	<property name="appname" value="CubePro" />
+	<property name="src" value="../${appname}/src" />
+	<property name="ext.lib" value="../${appname}/lib" />
+	<property name="app.home" value="../" />
+	<property name="properties.dir" value="../${appname}/properties"/>
+	<property name="xml.dir" value="../${appname}/xml"/>
+	<property name="war" value="${appname}.war" />
+	<property name="build" value="${app.home}/${appname}/WEB-INF" />
+	<property name="build.classesdir" value="${build}/classes" />
+	<property name="dist.dir" value="dist" />
+	<path id="project.class.path">
+		<fileset dir="${app.home}/${appname}/WEB-INF/lib">
+			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${ext.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+    <target name="usage">
+        <echo message=""/>
+        <echo message="${appname} build file"/>
+        <echo message="-----------------------------------"/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="compile   --> Build the application"/>
+        <echo message="deploy    --> Deploy application as a WAR file"/>
+    	<echo message="war		 --> Build the WAR file, and puts it in dist directory ready for deployment"/>
+        <echo message="install   --> Install application in Tomcat"/>
+        <echo message="reload    --> Reload application in Tomcat"/>
+        <echo message="start     --> Start Tomcat application"/>
+        <echo message="stop      --> Stop Tomcat application"/>
+        <echo message="list      --> List Tomcat applications"/>
+        <echo message=""/>
+    </target>
+
+	<!--
+	<target name="findbugs" depends="compile">
+		<findbugs home="${findbugs.home}" output="xml" outputFile="${dist.dir}/${fb.report}" jvmargs="-Xmx512m">
+			<auxClasspath refid="project.class.path" />
+			<sourcePath path="${src}" />
+			<class location="${build.classesdir}" />
+		</findbugs>
+	</target>
+	-->
+
+	<target name="clean_class">
+		<delete>
+			<fileset dir="${app.home}/CubePro/WEB-INF/classes">
+				<exclude name=".svn" />
+				<include name="**/*.*" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="clean_war">
+		<delete file="${dist.dir}/${war}" />
+	</target>
+
+	<target name="compile" depends="clean_class">
+		<javac srcdir="${src}" destdir="${build.classesdir}" debug="on" debuglevel="vars,lines,source">
+			<classpath refid="project.class.path" />
+		</javac>
+		<!--jar destfile="${app.home}/WEB-INF/classes/nregs.jar" basedir="${build.classesdir}"/-->
+		<copy todir="${app.home}/${appname}/WEB-INF/classes">
+	    	<fileset dir="${properties.dir}">
+	    		<include name="**/*.properties"/>
+	    	</fileset>
+	    	<fileset dir="${xml.dir}">
+	    		<include name="**/hibernate/**/*.xml"/>
+	    	</fileset>
+		</copy>
+	</target>
+
+	<target name="war" depends="compile, clean_war">
+		
+		<echo message="Creating ${war}.." />
+		<mkdir dir="${dist.dir}"/>
+		<jar jarfile="${dist.dir}/${war}" basedir="${app.home}/CubePro" excludes="${src}/**/*.*" />
+	</target>
+
+	<target name="deploy" depends="war">
+		<copy file="${dist.dir}/${war}" tofile="${tomcat.home}/webapps/${war}" />
+	</target>
+
+	<!-- ================================================================ -->
+	<!-- Findbug tasks - remove these if you don't have findbug installed -->
+	<!-- ================================================================ -->
+
+	<!--<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" >
+		<classpath>
+			<path location="${ext.lib}/findbugs-ant.jar" />
+		</classpath>
+	</taskdef>
+	-->
+	<!-- ============================================================== -->
+	<!-- Tomcat tasks - remove these if you don't have tomcat installed -->
+	<!-- ============================================================== -->
+	<typedef resource="org/apache/catalina/ant/antlib.xml" classpath="catalina-ant.jar" />
+
+	<target name="install" description="Install application in Tomcat">
+		<install url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" path="/${appname}" war="${dist.dir}/${war}" />
+	</target>
+
+	<target name="reload" description="Reload application in Tomcat">
+		<reload url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" path="/${appname}" />
+	</target>
+
+	<target name="start" description="Start Tomcat application">
+		<start url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" path="/${appname}" />
+	</target>
+
+	<target name="stop" description="Stop Tomcat application">
+		<stop url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" path="/${appname}" />
+	</target>
+
+	<target name="list" description="List Tomcat applications">
+		<list url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" />
+	</target>
+
+	<target name="deploy_app" description="Install web application" depends="war">
+		<deploy url="${tomcat.manager.url}" username="${tomcat.manager.username}" password="${tomcat.manager.password}" path="/${appname}" war="${dist.dir}/${war}" />
+	</target>
+
+	<target name="undeploy_app" description="Remove web application">
+		<undeploy url="${url}" username="${username}" password="${password}" path="${path}" />
+	</target>
+
+	<target name="clean" description="Clean output directories">
+		<delete>
+			<fileset dir="build">
+				<include name="**/*.class" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="undeploy" description="Un-Deploy application">
+		<delete>
+			<fileset dir="${deploy.path}/${name}">
+				<include name="**/*.*"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="redeploy_all" depends="stop, undeploy, clean, war, deploy, start"/>
+
+	<!-- End Tomcat tasks -->
+
+	<target name="quickdeploy" depends="stop, deploy, start"/>
+
+	<!-- Overall on the fly rebuild -->
+	<!--
+	<target name="auto-build-deploy" depends="stop, undeploy, clean, update, deploy, start"/>
+	-->
+</project>
