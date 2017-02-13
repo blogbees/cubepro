@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StuPerReport" language="groovy" pageWidth="1445" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1405" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7cd7b0f1-d45e-40b8-9270-3bee50db0f35">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="classid" class="java.lang.String"/>
+	<parameter name="fromdate" class="java.lang.String"/>
+	<parameter name="todate" class="java.lang.String"/>
+	<parameter name="fhead" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     invoice_details.`total_amt_paid` AS fees_amt,
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     invoice_details.`invoice_no` AS invoice_no,
+     invoice_details.`fees_date` AS fees_date,
+     invoice_details.`sub_type` AS sub_type,
+     invoice_details.`fees_type` AS fees_type,
+     class_details.`class_name` AS class_name,
+     class_details.`section_name` AS section_name
+FROM
+     `student_details` student_details INNER JOIN `invoice_details` invoice_details ON student_details.`student_id` = invoice_details.`student_id`
+     INNER JOIN `class_details` class_details ON student_details.`class_id` = class_details.`class_id`,
+     `school_details` school_details
+WHERE
+     invoice_details.`fees_type` = $P{fhead}
+AND class_details.`class_id` = $P{classid}
+ AND str_to_date(fees_date,'%d/%m/%Y') >= str_to_date($P{fromdate},'%d/%m/%Y')
+ AND str_to_date(fees_date,'%d/%m/%Y') <= str_to_date($P{todate},'%d/%m/%Y')
+ORDER BY
+     invoice_details.`invoice_no` ASC]]>
+	</queryString>
+	<field name="fees_amt" class="java.lang.Double"/>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="invoice_no" class="java.lang.String"/>
+	<field name="fees_date" class="java.lang.String"/>
+	<field name="sub_type" class="java.lang.String"/>
+	<field name="fees_type" class="java.lang.String"/>
+	<field name="class_name" class="java.lang.String"/>
+	<field name="section_name" class="java.lang.String"/>
+	<group name="school_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="sd_class_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement uuid="6e8f22ff-c39a-4ff8-865f-94292f3618d0" x="969" y="0" width="77" height="102"/>
+				<imageExpression><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement uuid="b5936b93-82c4-4d24-a19c-953aaf5df867" mode="Transparent" x="0" y="0" width="950" height="86" backcolor="#000000"/>
+				<staticText>
+					<reportElement uuid="0a601062-2097-492b-8fa7-7096f149d754" style="Title" x="0" y="0" width="432" height="84" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="24" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Collection On Fees Transaction Head Via Class In Invoice]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="1497839a-8a37-49a5-9c7c-64b5912d6aa6" mode="Transparent" x="432" y="0" width="500" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="7cb8bf5f-e750-4dc7-83b4-7b50e3f91564" mode="Transparent" x="433" y="22" width="500" height="40" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="4b60aefd-b420-483a-9c5f-eff361837411" mode="Transparent" x="433" y="64" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement uuid="3dc4600d-a2ba-4bab-9a0d-56416f9f1f53" mode="Transparent" x="684" y="64" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement uuid="d55c428f-d7d9-4405-bc38-281afeb226b2" mode="Transparent" x="0" y="90" width="950" height="32" forecolor="#000000" backcolor="#CC0000"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="4c69bfce-2b9c-4c9c-aa26-4242737cf347" x="750" y="12" width="144" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="594b8bea-da3b-43fd-905b-ed7f410e0093" x="100" y="6" width="100" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{fromdate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="a1de39fc-9c6e-4544-91e6-db67c81367e0" x="250" y="6" width="100" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{todate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="af60a0b6-899d-4977-947b-289f2b5f5925" style="Column header" x="200" y="8" width="50" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[TO]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="2c4ed3e5-2523-4759-a793-33d4597c7ca8" x="0" y="10" width="50" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{class_name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="285c7672-0957-4540-aefa-a0d019ac5255" x="50" y="10" width="50" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{section_name}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<rectangle>
+				<reportElement uuid="093c71f5-5757-496c-8af6-a6dcf8053b4a" mode="Transparent" x="1100" y="24" width="77" height="24" backcolor="#666666"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="d3c64b20-3b6c-417a-a87c-b3063f112136" x="1100" y="24" width="77" height="24" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement uuid="ebd068a1-4f15-4e0f-b332-ca31dd64aac1" mode="Transparent" x="0" y="0" width="1405" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement uuid="9d977c6c-c4b9-473d-99a9-da671c98e523" style="Column header" x="1340" y="3" width="40" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement uuid="cc170f4e-4c08-40e5-95d2-2c5ea04d8a89" style="Column header" x="1260" y="3" width="80" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement uuid="ff06bf89-320e-4bc4-ae02-c09de48a69c2" style="Column header" x="2" y="3" width="197" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="140" splitType="Stretch">
+			<crosstab>
+				<reportElement uuid="3e9f4ef5-6f19-4e49-988d-3d880833cd4d" x="0" y="0" width="1405" height="140"/>
+				<rowGroup name="invoice_no" width="70" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{invoice_no}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="e298a5b1-44d4-48f3-a983-425512372f1d" style="Crosstab Data Text" x="0" y="0" width="70" height="25"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{invoice_no}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="9248e0e0-7ae9-438b-80c4-9e14c3350c9d" x="0" y="0" width="70" height="25"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<text><![CDATA[Total invoice_no]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="sub_type" height="30" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{sub_type}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement uuid="791562ef-449d-4bf0-a2de-26bf44376778" style="Crosstab Data Text" x="0" y="0" width="63" height="30"/>
+								<textElement>
+									<font size="12"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{sub_type}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement uuid="dc0929e5-50e7-46f9-bce0-3e7f97f5f155" x="0" y="0" width="81" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="fees_amtMeasure" class="java.math.BigDecimal" calculation="Sum">
+					<measureExpression><![CDATA[$F{fees_amt}]]></measureExpression>
+				</measure>
+				<crosstabCell width="63" height="25">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="fb9ece30-8ce5-4482-bead-476255e8f512" style="Crosstab Data Text" x="0" y="0" width="63" height="25"/>
+							<textElement>
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{fees_amtMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="63" height="25" rowTotalGroup="invoice_no">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="62753f03-fbe7-4766-8b18-0f42295dcb84" style="Crosstab Data Text" x="0" y="0" width="63" height="25"/>
+							<textElement>
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{fees_amtMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="81" columnTotalGroup="sub_type">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="480b363a-e3a2-4622-a33b-a1a9babc0913" style="Crosstab Data Text" x="0" y="0" width="81" height="25"/>
+							<textElement>
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{fees_amtMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="81" rowTotalGroup="invoice_no" columnTotalGroup="sub_type">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement uuid="c64528fb-8cbc-4ef2-9737-023180f38a86" style="Crosstab Data Text" x="0" y="0" width="81" height="25"/>
+							<textElement>
+								<font size="12"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{fees_amtMeasure}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>

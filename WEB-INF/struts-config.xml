@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+	This is a blank Struts configuration file with an example
+	welcome action/page and other commented sample elements.
+	
+	Struts Validator is configured using the factory defaults
+	and is ready-to-use.
+	
+	NOTE: If you have a generator tool to create the corresponding Java classes
+	for you, you could include the details in the "form-bean" declarations.
+	Otherwise, you would only define the "form-bean" element itself, with the
+	corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+	<!-- ================================================ Form Bean Definitions -->
+
+	<form-beans>
+
+		<!-- Login Form Bean -->
+
+		<form-bean name="loginForm"
+			type="com.cubepro.login.form.LoginForm" />
+		<form-bean name="studentDetailForm"
+			type="com.cubepro.student.form.StudentDetailForm" />
+		<form-bean name="aluminiDetailForm"
+			type="com.cubepro.alumini.form.AluminiDetailForm" />			
+		<form-bean name="staffDetailForm"
+			type="com.cubepro.staff.form.StaffDetailForm" />
+		<form-bean name="staffAttendanceForm"
+			type="com.cubepro.staff.attendance.form.StaffAttendanceForm" />
+		<form-bean name="studentAttendanceForm"
+			type="com.cubepro.student.attendance.form.StudentAttendanceForm" />
+		<form-bean name="staffAttendanceForm"
+			type="com.cubepro.staff.attendance.form.StaffAttendanceForm" />
+		<form-bean name="markDetailForm"
+			type="com.cubepro.mark.form.MarkDetailForm" />
+		<form-bean name="absentSMSForm"
+			type="com.cubepro.sms.form.AbsentSMSForm" />
+		<form-bean name="markSMSForm"
+			type="com.cubepro.sms.form.MarkSMSForm" />
+		<form-bean name="generalSMSForm"
+			type="com.cubepro.sms.form.GeneralSMSForm" />
+		<form-bean name="reportListForm"
+			type="com.cubepro.reports.form.ReportListForm" />
+		<form-bean name="classTimeTableForm"
+			type="com.cubepro.timetable.classes.form.ClassTimeTableForm" />
+		<form-bean name="examTimeTableForm"
+			type="com.cubepro.timetable.form.ExamTimeTableForm" />
+		<form-bean name="transactionDetailForm"
+			type="com.cubepro.transaction.form.TransactionDetailForm" />
+		<form-bean name="invoiceDetailForm"
+			type="com.cubepro.invoice.form.InvoiceDetailForm" />
+		<form-bean name="classDetailForm"
+			type="com.cubepro.classes.form.ClassDetailForm" />
+		<form-bean name="schoolDetailForm"
+			type="com.cubepro.registration.form.SchoolDetailsForm" />
+		<form-bean name="subjectDetailForm"
+			type="com.cubepro.subject.form.SubjectDetailForm" />
+		<form-bean name="transMasterForm"
+			type="com.cubepro.transaction.form.TransactionMasterForm" />
+		<form-bean name="subjectForm"
+			type="com.cubepro.subject.form.SubjectForm" />
+		<form-bean name="bankForm"
+			type="com.cubepro.bank.form.BankForm" />
+		<form-bean name="termForm"
+			type="com.cubepro.exam.form.TermForm" />
+		<form-bean name="bankDetailForm"
+			type="com.cubepro.bank.form.BankDetailForm" />
+		<form-bean name="examDetailForm"
+			type="com.cubepro.exam.form.ExamDetailForm" />
+		<form-bean name="feesForm"
+			type="com.cubepro.fees.form.FeesForm" />
+		<form-bean name="feesSMSForm"
+			type="com.cubepro.sms.form.FeesSMSForm" />
+		<form-bean name="homeWorkSMSForm"
+			type="com.cubepro.sms.form.HomeWorkSMSForm" />
+		<form-bean name="balanceSheetForm"
+			type="com.cubepro.reports.form.BalanceSheetForm" />
+		<form-bean name="accBudgetForm"
+			type="com.cubepro.reports.form.AccountBudgetForm" />	
+		<form-bean name="transferCertForm"
+			type="com.cubepro.reports.form.TransferCertForm" />
+		<form-bean name="libraryForm"
+			type="com.cubepro.library.form.LibraryForm" />		
+		<form-bean name="vehicleForm"
+			type="com.cubepro.transport.form.VehicleForm" />			
+		<form-bean name="routeForm"
+			type="com.cubepro.transport.form.RouteForm" />
+		<form-bean name="stopForm"
+			type="com.cubepro.transport.form.StopForm" />
+		<form-bean name="routeStopForm"
+			type="com.cubepro.transport.form.RouteStopForm" />
+		<form-bean name="vehicleMaintForm"
+			type="com.cubepro.transport.form.VehicleMaintForm" />
+		<form-bean name="vehicleFuelForm"
+			type="com.cubepro.transport.form.VehicleFuelForm" />
+		<form-bean name="roomForm"
+			type="com.cubepro.hostel.form.RoomForm" />
+		<form-bean name="visitorForm"
+			type="com.cubepro.hostel.form.VisitorForm" />
+		<form-bean name="buildingInfForm"
+			type="com.cubepro.hostel.form.BuildingInfForm" />
+		<form-bean name="bookForm"
+			type="com.cubepro.library.form.BookForm" />
+	<form-bean name="menuPermissionsForm"
+			type="com.cubepro.menu.form.PermissionForm" />
+		<form-bean name="categoryForm"
+			type="com.cubepro.library.form.CategoryForm" />
+		<form-bean name="studentLendDetailsForm"
+			type="com.cubepro.library.form.StudentLendDetailsForm" />		
+		<form-bean name="staffLendDetailsForm"
+			type="com.cubepro.library.form.StaffLendDetailsForm" />
+		<form-bean name="homeWorkForm"
+			type="com.cubepro.homework.form.HomeWorkForm" />
+		<form-bean name="studentHomeWorkForm"
+			type="com.cubepro.student.form.StudentHomeWorkForm" />		
+	</form-beans>
+
+	<!-- ========================================= Global Exception Definitions -->
+
+	<global-exceptions>
+		<!-- sample exception handler
+			<exception
+			key="expired.password"
+			type="app.ExpiredPasswordException"
+			path="/changePassword.jsp"/>
+			end sample -->
+		<exception key="global.error.unknown"
+			path="/jsp/common/error.jsp" type="java.lang.Exception"
+			handler="org.apache.struts.action.ExceptionHandler" />
+	</global-exceptions>
+
+
+	<!-- =========================================== Global Forward Definitions -->
+
+	<global-forwards>
+		<!-- Default forward to "Welcome" action -->
+		<!-- Demonstrates using index.jsp to forward -->
+		<forward name="welcome" path="/jsp/login.jsp" />
+		<forward name="timeout" path="/jsp/login.jsp" />
+		<forward name="publicerror" path="/login.jsp" />
+		<forward name="unauthorized"
+			path="/jsp/common/permissionError.jsp" />
+	</global-forwards>
+
+
+	<!-- =========================================== Action Mapping Definitions -->
+
+	<action-mappings>
+		<!-- Default "Welcome" action -->
+		<!-- Forwards to Welcome.jsp -->
+		<action path="/Welcome" forward="/jsp/login.jsp"
+			validate="false" />
+
+
+		<!-- Login Action Mappings -->
+		<action path="/Login" name="loginForm"
+			type="com.cubepro.login.action.LoginAction" input="/jsp/login.jsp"
+			validate="false">
+			<forward name="success" path="/jsp/login.jsp" />
+			<forward name="failure" path="/jsp/login.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="isUserIsValid" path="/jsp/default.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/EditLogin" name="loginForm"
+			type="com.cubepro.login.action.LoginAction" input="/jsp/master/editlogin.jsp"
+			validate="false">
+			<forward name="success" path="/jsp/master/editlogin.jsp" />
+			<forward name="failure" path="/jsp/master/editlogin.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="isUserIsValid" path="/jsp/default.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/Home" name="loginForm"
+			type="com.cubepro.login.action.LoginAction" input="/jsp/default.jsp"
+			validate="false">
+			<forward name="success" path="/jsp/default.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+
+		<action path="/Logout" name="loginForm"
+			type="com.cubepro.login.action.LoginAction" input="/jsp/login.jsp"
+			validate="false">
+			<forward name="success" path="/jsp/login.jsp"></forward>
+		</action>
+
+
+		<action path="/ListOfStudents" name="studentDetailForm"
+			type="com.cubepro.student.action.StudentDetailAction"
+			input="/jsp/studentDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/studentDetail.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/ListOfStudentsNoHL" name="studentDetailForm"
+			type="com.cubepro.student.action.StudentDetailAction"
+			input="/jsp/studentDetailNoHL.jsp" validate="false">
+			<forward name="success" path="/jsp/studentDetailNoHL.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+
+		<action path="/StudentFeeSearch" name="studentDetailForm"
+			type="com.cubepro.student.action.StudentDetailAction"
+			input="/jsp/studentDetailFee.jsp" validate="false">
+			<forward name="success" path="/jsp/studentDetailFee.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/StudentDetail" name="studentDetailForm"
+			type="com.cubepro.student.action.StudentTransactionAction"
+			input="/jsp/studentDetailTransaction.jsp" validate="false">
+			<forward name="success"
+				path="/jsp/studentDetailTransaction.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Aluminium" name="aluminiDetailForm"
+			type="com.cubepro.alumini.action.AluminiTransactionAction"
+			input="/jsp/aluminiDetailTransaction.jsp" validate="false">
+			<forward name="success"
+				path="/jsp/aluminiDetailTransaction.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/ListOfStaffs" name="staffDetailForm"
+			type="com.cubepro.staff.action.StaffDetailAction"
+			input="/jsp/staffDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/staffDetail.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/ListOfStaffsNoHL" name="staffDetailForm"
+			type="com.cubepro.staff.action.StaffDetailAction"
+			input="/jsp/staffDetailNoHL.jsp" validate="false">
+			<forward name="success" path="/jsp/staffDetailNoHL.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+
+		<action path="/StaffDetail" name="staffDetailForm"
+			type="com.cubepro.staff.action.StaffTransactionAction"
+			input="/jsp/staffDetailTransaction.jsp" validate="false">
+			<forward name="success"
+				path="/jsp/staffDetailTransaction.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/StaffAttendance" name="staffAttendanceForm"
+			type="com.cubepro.staff.attendance.action.StaffAttendanceAction"
+			input="/staffAttendance.jsp" validate="false">
+			<forward name="success" path="/jsp/staffAttendance.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/StudentAttendance" name="studentAttendanceForm"
+			type="com.cubepro.student.attendance.action.StudentAttendanceAction"
+			input="/jsp/studentAttendance.jsp" validate="false">
+			<forward name="success" path="/jsp/studentAttendance.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/MarkList" name="markDetailForm"
+			type="com.cubepro.mark.action.MarkDetailAction"
+			input="/jsp/studentMarkList.jsp" validate="false">
+			<forward name="success" path="/jsp/studentMarkList.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/AbsentSMS" name="absentSMSForm"
+			type="com.cubepro.sms.action.AbsentSMSAction"
+			input="/jsp/absentSMSList.jsp" validate="false">
+			<forward name="success" path="/jsp/absentSMSList.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/MarkSMS" name="markSMSForm"
+			type="com.cubepro.sms.action.MarkSMSAction"
+			input="/jsp/markSMSList.jsp" validate="false">
+			<forward name="success" path="/jsp/markSMSList.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/GeneralSMS" name="generalSMSForm"
+			type="com.cubepro.sms.action.GeneralSMSAction"
+			input="/jsp/generalSMSList.jsp" validate="false">
+			<forward name="success" path="/jsp/generalSMSList.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/StaffSMS" name="generalSMSForm"
+			type="com.cubepro.sms.action.StaffSMSAction"
+			input="/jsp/staffSMS.jsp" validate="false">
+			<forward name="success" path="/jsp/staffSMS.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/ClassTimeTable" name="classTimeTableForm"
+			type="com.cubepro.timetable.classes.action.ClassTimeTableAction"
+			input="/jsp/classTimeTable.jsp" validate="false">
+			<forward name="success" path="/jsp/classTimeTable.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/ExamTimeTable" name="examTimeTableForm"
+			type="com.cubepro.timetable.action.ExamTimeTableAction"
+			input="/jsp/examTimeTable.jsp" validate="false">
+			<forward name="success" path="/jsp/examTimeTable.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/TransactionDetail" name="transactionDetailForm"
+			type="com.cubepro.transaction.action.TransactionDetailAction"
+			input="/jsp/transactionDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/transactionDetail.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/AssetAndLiaDetail" name="transactionDetailForm"
+			type="com.cubepro.transaction.action.AssetAndLiabilityAction"
+			input="/jsp/assetAndLiabilityDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/assetAndLiabilityDetail.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/InvoiceDetail" name="invoiceDetailForm"
+			type="com.cubepro.invoice.action.InvoiceDetailAction"
+			input="/jsp/invoiceDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/invoiceDetail.jsp" />
+			<forward name="printInvoice" path="/jsp/printInvoice.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/EditSchool" name="schoolDetailForm"
+			type="com.cubepro.registration.action.SchoolDetailsAction"
+			input="/jsp/schoolRegistration.jsp" validate="false">
+			<forward name="success" path="/jsp/schoolRegistration.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/EditClass" name="classDetailForm"
+			type="com.cubepro.classes.action.ClassDetailAction"
+			input="/jsp/master/class.jsp" validate="false">
+			<forward name="success" path="/jsp/master/class.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/EditSubject" name="subjectForm"
+			type="com.cubepro.subject.action.SubjectAction"
+			input="/jsp/master/subject.jsp" validate="false">
+			<forward name="success" path="/jsp/master/subject.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/EditBank" name="bankForm"
+			type="com.cubepro.bank.action.BankAction"
+			input="/jsp/master/bank.jsp" validate="false">
+			<forward name="success" path="/jsp/master/bank.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/EditBankAccount" name="bankDetailForm"
+			type="com.cubepro.bank.action.BankDetailAction"
+			input="/jsp/master/bankDetail.jsp" validate="false">
+			<forward name="success" path="/jsp/bankDetail.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+
+		<action path="/EditCWS" name="subjectDetailForm"
+			type="com.cubepro.subject.action.SubjectDetailAction"
+			input="/jsp/master/cws.jsp" validate="false">
+			<forward name="success" path="/jsp/master/cws.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/EditTransDesc" name="transMasterForm"
+			type="com.cubepro.transaction.action.TransactionMasterAction"
+			input="/jsp/master/transdesc.jsp" validate="false">
+			<forward name="success" path="/jsp/master/transdesc.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+
+		<action path="/EditCWT" name="examDetailForm"
+			type="com.cubepro.exam.action.ExamDetailAction"
+			input="/jsp/master/cwt.jsp" validate="false">
+			<forward name="success" path="/jsp/master/cwt.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/EditTerm" name="termForm"
+			type="com.cubepro.exam.action.TermAction"
+			input="/jsp/master/term.jsp" validate="false">
+			<forward name="success" path="/jsp/master/term.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/EditFees" name="feesForm"
+			type="com.cubepro.fees.action.FeesAction"
+			input="/jsp/master/fees.jsp" validate="false">
+			<forward name="success" path="/jsp/master/fees.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/BalanceSheet" name="balanceSheetForm"
+			type="com.cubepro.reports.action.BalanceSheetAction"
+			input="/jsp/balanceSheet.jsp" validate="false">
+			<forward name="success" path="/jsp/balanceSheet.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/AccountBudget" name="accBudgetForm"
+			type="com.cubepro.reports.action.AccountBudgetAction"
+			input="/jsp/accBudget.jsp" validate="false">
+			<forward name="success" path="/jsp/accBudget.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/TransferCert1" name="transferCertForm"
+			type="com.cubepro.reports.action.TransferCertAction"
+			input="/jsp/transferCert1.jsp" validate="false">
+			<forward name="success" path="/jsp/transferCert1.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/TransferCert2" name="transferCertForm"
+			type="com.cubepro.reports.action.TransferCertAction"
+			input="/jsp/transferCert2.jsp" validate="false">
+			<forward name="success" path="/jsp/transferCert2.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Library" name="libraryForm"
+			type="com.cubepro.library.action.LibraryAction"
+			input="/jsp/library/libraryhome.jsp" validate="false">
+			<forward name="success" path="/jsp/library/libraryhome.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Vehicle" name="vehicleForm"
+			type="com.cubepro.transport.action.VehicleAction"
+			input="/jsp/transport/vehicle.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/vehicle.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Route" name="routeForm"
+			type="com.cubepro.transport.action.RouteAction"
+			input="/jsp/transport/route.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/route.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+	<action path="/Stop" name="stopForm"
+			type="com.cubepro.transport.action.StopAction"
+			input="/jsp/transport/stop.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/stop.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		<action path="/RouteStop" name="routeStopForm"
+			type="com.cubepro.transport.action.RouteStopAction"
+			input="/jsp/transport/routeStop.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/routeStop.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		<action path="/ReportList" name="reportListForm"
+			type="com.cubepro.reports.action.ListReportAction"
+			input="/jsp/reportsList.jsp" validate="false">
+			<forward name="success" path="/jsp/reportsList.jsp" />
+			<forward name="executeReport" path="/jsp/executeReport.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/VehicleMaint" name="vehicleMaintForm"
+			type="com.cubepro.transport.action.VehicleMaintAction"
+			input="/jsp/transport/vehicleMaint.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/vehicleMaint.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/VehicleFuel" name="vehicleFuelForm"
+			type="com.cubepro.transport.action.VehicleFuelAction"
+			input="/jsp/transport/vehicleFuel.jsp" validate="false">
+			<forward name="success" path="/jsp/transport/vehicleFuel.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Room" name="roomForm"
+			type="com.cubepro.hostel.action.RoomAction"
+			input="/jsp/hostel/room.jsp" validate="false">
+			<forward name="success" path="/jsp/hostel/room.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Visitor" name="visitorForm"
+			type="com.cubepro.hostel.action.VisitorAction"
+			input="/jsp/hostel/visitor.jsp" validate="false">
+			<forward name="success" path="/jsp/hostel/visitor.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/BuildingInf" name="buildingInfForm"
+			type="com.cubepro.hostel.action.BuildingInfAction"
+			input="/jsp/hostel/buildingInf.jsp" validate="false">
+			<forward name="success" path="/jsp/hostel/buildingInf.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Category" name="categoryForm"
+			type="com.cubepro.library.action.CategoryAction"
+			input="/jsp/library/category.jsp" validate="false">
+			<forward name="success" path="/jsp/library/category.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/Book" name="bookForm"
+			type="com.cubepro.library.action.BookAction"
+			input="/jsp/library/book.jsp" validate="false">
+			<forward name="success" path="/jsp/library/book.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/MenuPermissions" name="menuPermissionsForm"
+			type="com.cubepro.menu.action.PermissionAction"
+			input="/jsp/master/menuPermissions.jsp" validate="false">
+			<forward name="success" path="/jsp/master/menuPermissions.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		
+		<action path="/StudentLendDetails" name="studentDetailForm"
+			type="com.cubepro.student.action.StudentDetailAction"
+			input="/jsp/library/studentLendDetails.jsp" validate="false">
+			<forward name="success" path="/jsp/library/studentLendDetails.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/StaffLendDetails" name="staffDetailForm"
+			type="com.cubepro.staff.action.StaffDetailAction"
+			input="/jsp/library/staffLendDetails.jsp" validate="false">
+			<forward name="success" path="/jsp/library/staffLendDetails.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/StudentTrack" name="studentLendDetailsForm"
+			type="com.cubepro.library.action.StudentLendDetailsAction"
+			input="/jsp/library/studentTrack.jsp" validate="false">
+			<forward name="success" path="/jsp/library/studentTrack.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/StaffTrack" name="staffLendDetailsForm"
+			type="com.cubepro.library.action.StaffLendDetailsAction"
+			input="/jsp/library/staffTrack.jsp" validate="false">
+			<forward name="success" path="/jsp/library/staffTrack.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/FeesSMS" name="feesSMSForm"
+			type="com.cubepro.sms.action.FeesSMSAction"
+			input="/jsp/feesSms.jsp" validate="false">
+			<forward name="success" path="/jsp/feesSms.jsp" />
+			<forward name="error" path="/jsp/feesSms.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/HomeWorkSMS" name="homeWorkSMSForm"
+			type="com.cubepro.sms.action.HomeWorkSMSAction"
+			input="/jsp/homeWorkSms.jsp" validate="false">
+			<forward name="success" path="/jsp/homeWorkSms.jsp" />
+			<forward name="error" path="/jsp/homeWorkSms.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+
+		<action path="/HomeWork" name="homeWorkForm"
+			type="com.cubepro.homework.action.HomeWorkAction"
+			input="/jsp/master/homework.jsp" validate="false">
+			<forward name="success" path="/jsp/master/homework.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+		<action path="/StudentHomeWork" name="studentHomeWorkForm"
+			type="com.cubepro.student.action.StudentHomeWorkAction"
+			input="/jsp/studentHomeWork.jsp" validate="false">
+			<forward name="success" path="/jsp/studentHomeWork.jsp" />
+			<forward name="error" path="/jsp/error.jsp" />
+			<forward name="permissionError"
+				path="/jsp/permissionError.jsp" />
+		</action>
+		
+
+		<action path="/GenerateReport" name="reportListForm"
+			type="com.cubepro.reports.GenerateReportAction" scope="request"
+			validate="false" input="/jsp/reportsList.jsp">
+			<forward name="success" path="/jsp/executeReport.jsp" />
+		</action>
+
+		<action path="/ExportToPDF"
+			type="com.cubepro.reports.ExportReportAction" scope="request"
+			validate="false">
+			<forward name="success" path="/jsp/exportReport.jsp" />
+		</action>
+
+		<action path="/ExportToExcel"
+			type="com.cubepro.reports.ExportReportAction" scope="request"
+			validate="false">
+			<forward name="success" path="/jsp/exportReport.jsp" />
+		</action>
+
+		<action path="/ExportToCsv"
+			type="com.cubepro.reports.ExportReportAction" scope="request"
+			validate="false">
+			<forward name="success" path="/jsp/exportReport.jsp" />
+		</action>
+		
+		<action path="/ExportToXml"
+			type="com.cubepro.reports.ExportReportAction" scope="request"
+			validate="false">
+			<forward name="success" path="/jsp/exportReport.jsp" />
+		</action>		
+
+		<action path="/ReportNavigation" name="reportListForm"
+			type="com.cubepro.reports.RenderReportAction" scope="request"
+			validate="false">
+			<forward name="success" path="/jsp/executeReport.jsp" />
+		</action>
+
+	</action-mappings>
+
+	<!-- ======================================== Controller Definitions -->
+
+	<controller contentType="text/html;charset=UTF-8" locale="true"
+		nocache="true">
+		<set-property property="processorClass"
+			value="com.cubepro.components.controller.CubeProRequestProcessor" />
+	</controller>
+
+	<!-- ======================================== Message Resources Definitions -->
+
+	<message-resources parameter="MessageResources" />
+
+	<!-- =============================================== Plug Ins Configuration -->
+
+	<!-- ======================================================= Tiles plugin -->
+	<!--
+		This plugin initialize Tiles definition factory. This later can takes some
+		parameters explained here after. The plugin first read parameters from
+		web.xml, thenoverload them with parameters defined here. All parameters
+		are optional.
+		The plugin should be declared in each struts-config file.
+		- definitions-config: (optional)
+		Specify configuration file names. There can be several comma
+		separated file names (default: ?? )
+		- moduleAware: (optional - struts1.1)
+		Specify if the Tiles definition factory is module aware. If true
+		(default), there will be one factory for each Struts module.
+		If false, there will be one common factory for all module. In this
+		later case, it is still needed to declare one plugin per module.
+		The factory will be initialized with parameters found in the first
+		initialized plugin (generally the one associated with the default
+		module).
+		true : One factory per module. (default)
+		false : one single shared factory for all modules
+		- definitions-parser-validate: (optional)
+		Specify if xml parser should validate the Tiles configuration file.
+		true : validate. DTD should be specified in file header (default)
+		false : no validation
+		
+		Paths found in Tiles definitions are relative to the main context.
+		
+		To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+		directory then uncomment the plugin definition below.
+		
+	-->
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="pathnames"
+			value="/org/apache/struts/validator/validator-rules.xml" />
+	</plug-in>
+	<plug-in className="com.cubepro.general.plugin.HibernatePlugin">
+		<set-property property="cubeproDbConfigFile"
+			value="/WEB-INF/hibernate.cfg.xml" />
+	</plug-in>
+
+	<!-- ===================Quartz scheduler plugin ============ -->
+	<!--<plug-in className="com.cubepro.components.scheduler.SchedulerPlugIn">
+		<set-property property="startOnLoad" value="true"/>
+		<set-property property="startupDelay" value="0"/>
+		</plug-in>-->
+</struts-config>

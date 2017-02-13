@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TotalFeesCollectiongSchoolDetails" language="groovy" pageWidth="845" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="805" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<parameter name="date" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     sum(invoice_details.`total_amt_paid`) AS total_amt_paid,
+     invoice_details.`fine` AS fine,
+     sum(invoice_details.`conc`) AS conc,
+     sum(invoice_details.`hostel_fee`) AS hostel_fee,
+     sum(invoice_details.`transport_fee`) AS transport_fee,
+     sum(invoice_details.`balance_amt`) AS balance_amt,
+     sum(invoice_details.`gross_amt`) AS gross_amt,
+     sum(invoice_details.`scholar_amt`) AS scholar_amt,
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     school_details.`host_name` AS shname,
+     invoice_details.`invoice_id` AS invoice_id,
+     invoice_details.`fees_id` AS fees_id,
+     invoice_details.`invoice_no` AS invoice_no,
+     invoice_details.`student_id` AS student_id,
+     invoice_details.`invoice_date` AS invoice_date,
+     invoice_details.`create_date` AS create_date,
+     invoice_details.`create_user_id` AS create_user_id,
+     invoice_details.`change_date` AS change_date,
+     invoice_details.`change_user_id` AS change_user_id,
+     invoice_details.`fees_type` AS fees_type,
+     invoice_details.`sub_type` AS sub_type,
+     invoice_details.`paid_by` AS paid_by,
+     invoice_details.`pay_by` AS pay_by,
+     invoice_details.`chq_no` AS chq_no,
+     invoice_details.`student_type` AS student_type,
+     invoice_details.`fees_date` AS fees_date,
+     invoice_details.`paid_amt` AS paid_amt,
+     student_details.`student_id` AS student_id,
+     student_details.`student_name` AS student_name,
+     concat(student_details.`student_name`, '.', student_details.`last_name`) AS sname,
+     student_details.`roll_no` AS roll_no,
+     student_details.`dob` AS dob,
+     student_details.`doj` AS doj,
+     student_details.`father_name` AS father_name,
+     student_details.`mother_name` AS mother_name,
+     student_details.`guardian_name` AS guardian_name,
+     student_details.`address_1` AS address_1,
+     student_details.`address_2` AS address_2,
+     student_details.`city` AS city,
+     student_details.`state` AS state,
+     student_details.`country` AS country,
+     student_details.`zipCode` AS zipCode,
+     student_details.`phone` AS phone,
+     student_details.`mobile1` AS mobile1,
+     student_details.`class_id` AS class_id,
+     student_details.`course_ids` AS course_ids,
+     student_details.`gender` AS gender,
+     student_details.`status` AS status,
+     student_details.`photo` AS photo,
+     student_details.`caste` AS caste,
+     student_details.`religion` AS religion,
+     student_details.`nationality` AS nationality,
+     student_details.`mother_tongue` AS mother_tongue,
+     student_details.`first_language` AS first_language,
+     student_details.`second_language` AS second_language,
+     student_details.`third_language` AS third_language,
+     student_details.`blood_group` AS blood_group,
+     student_details.`admission_no` AS admission_no,
+     student_details.`physical_status` AS physical_status,
+     student_details.`scholarship` AS scholarship,
+     student_details.`prev_inst` AS prev_inst,
+     student_details.`prev_inst_reason` AS prev_inst_reason,
+     student_details.`iden_mark1` AS iden_mark1,
+     student_details.`iden_mark2` AS iden_mark2,
+     student_details.`iden_mark3` AS iden_mark3,
+     student_details.`remarks` AS remarks,
+     student_details.`landline1` AS landline1,
+     student_details.`mobile2` AS mobile2,
+     student_details.`landline2` AS landline2,
+     student_details.`office2` AS office2,
+     student_details.`altemail` AS altemail,
+     student_details.`email` AS email,
+     student_details.`last_name` AS last_name,
+     student_details.`medium` AS medium,
+     student_details.`category` AS category,
+     student_details.`sub_category` AS sub_category,
+     student_details.`reg_ser_no` AS reg_ser_no,
+     student_details.`is_using_transport` AS is_using_transport,
+     student_details.`is_using_hostel` AS is_using_hostel,
+     student_details.`is_using_library` AS is_using_library,
+     student_details.`is_using_lab` AS is_using_lab,
+     student_details.`route_stop_id` AS route_stop_id,
+     student_details.`room_id` AS room_id,
+     student_details.`is_using_scholar` AS is_using_scholar,
+     student_details.`scholar1` AS scholar1,
+     student_details.`pta` AS pta,
+     student_details.`govt_reg_no` AS govt_reg_no,
+     class_details.`class_id` AS class_id,
+     class_details.`class_name` AS class_name,
+     class_details.`no_of_students` AS no_of_students,
+     class_details.`section_name` AS section_name,
+     class_details.`staff_in_charge_id` AS staff_in_charge_id,
+     class_details.`status` AS status,
+     class_details.`class_type` AS class_type,
+     class_details.`class_code` AS class_code,
+     class_details.`class_detail_name` AS class_detail_name
+FROM
+     `student_details` student_details INNER JOIN `invoice_details` invoice_details ON student_details.`student_id` = invoice_details.`student_id`
+     INNER JOIN `class_details` class_details ON student_details.`class_id` = class_details.`class_id`,
+     `school_details` school_details
+WHERE
+     invoice_details.`fees_date` = $P{date} and
+invoice_details.`fine`>0
+GROUP BY
+     invoice_details.`fees_type`
+     and
+     invoice_details.`invoice_id`]]>
+	</queryString>
+	<field name="total_amt_paid" class="java.lang.Double"/>
+	<field name="fine" class="java.lang.Long"/>
+	<field name="conc" class="java.lang.Double"/>
+	<field name="hostel_fee" class="java.lang.Double"/>
+	<field name="transport_fee" class="java.lang.Double"/>
+	<field name="balance_amt" class="java.lang.Double"/>
+	<field name="gross_amt" class="java.lang.Double"/>
+	<field name="scholar_amt" class="java.lang.Double"/>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="shname" class="java.lang.String"/>
+	<field name="invoice_id" class="java.lang.Long"/>
+	<field name="fees_id" class="java.lang.Long"/>
+	<field name="invoice_no" class="java.lang.String"/>
+	<field name="student_id" class="java.lang.Long"/>
+	<field name="invoice_date" class="java.sql.Timestamp"/>
+	<field name="create_date" class="java.sql.Timestamp"/>
+	<field name="create_user_id" class="java.lang.Long"/>
+	<field name="change_date" class="java.sql.Timestamp"/>
+	<field name="change_user_id" class="java.lang.Long"/>
+	<field name="fees_type" class="java.lang.String"/>
+	<field name="sub_type" class="java.lang.String"/>
+	<field name="paid_by" class="java.lang.String"/>
+	<field name="pay_by" class="java.lang.String"/>
+	<field name="chq_no" class="java.lang.String"/>
+	<field name="student_type" class="java.lang.String"/>
+	<field name="fees_date" class="java.lang.String"/>
+	<field name="paid_amt" class="java.lang.String"/>
+	<field name="student_name" class="java.lang.String"/>
+	<field name="sname" class="java.lang.String"/>
+	<field name="roll_no" class="java.lang.String"/>
+	<field name="dob" class="java.lang.String"/>
+	<field name="doj" class="java.lang.String"/>
+	<field name="father_name" class="java.lang.String"/>
+	<field name="mother_name" class="java.lang.String"/>
+	<field name="guardian_name" class="java.lang.String"/>
+	<field name="address_1" class="java.lang.String"/>
+	<field name="address_2" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="zipCode" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile1" class="java.lang.String"/>
+	<field name="class_id" class="java.lang.Long"/>
+	<field name="course_ids" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
+	<field name="status" class="java.lang.Long"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="caste" class="java.lang.String"/>
+	<field name="religion" class="java.lang.String"/>
+	<field name="nationality" class="java.lang.String"/>
+	<field name="mother_tongue" class="java.lang.String"/>
+	<field name="first_language" class="java.lang.String"/>
+	<field name="second_language" class="java.lang.String"/>
+	<field name="third_language" class="java.lang.String"/>
+	<field name="blood_group" class="java.lang.String"/>
+	<field name="admission_no" class="java.lang.String"/>
+	<field name="physical_status" class="java.lang.String"/>
+	<field name="scholarship" class="java.lang.String"/>
+	<field name="prev_inst" class="java.lang.String"/>
+	<field name="prev_inst_reason" class="java.lang.String"/>
+	<field name="iden_mark1" class="java.lang.String"/>
+	<field name="iden_mark2" class="java.lang.String"/>
+	<field name="iden_mark3" class="java.lang.String"/>
+	<field name="remarks" class="java.lang.String"/>
+	<field name="landline1" class="java.lang.String"/>
+	<field name="mobile2" class="java.lang.String"/>
+	<field name="landline2" class="java.lang.String"/>
+	<field name="office2" class="java.lang.String"/>
+	<field name="altemail" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="medium" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="sub_category" class="java.lang.String"/>
+	<field name="reg_ser_no" class="java.lang.String"/>
+	<field name="is_using_transport" class="java.lang.String"/>
+	<field name="is_using_hostel" class="java.lang.String"/>
+	<field name="is_using_library" class="java.lang.String"/>
+	<field name="is_using_lab" class="java.lang.String"/>
+	<field name="route_stop_id" class="java.lang.Long"/>
+	<field name="room_id" class="java.lang.Long"/>
+	<field name="is_using_scholar" class="java.lang.String"/>
+	<field name="scholar1" class="java.lang.String"/>
+	<field name="pta" class="java.lang.String"/>
+	<field name="govt_reg_no" class="java.lang.String"/>
+	<field name="class_name" class="java.lang.String"/>
+	<field name="no_of_students" class="java.lang.Long"/>
+	<field name="section_name" class="java.lang.String"/>
+	<field name="staff_in_charge_id" class="java.lang.String"/>
+	<field name="class_type" class="java.lang.String"/>
+	<field name="class_code" class="java.lang.String"/>
+	<field name="class_detail_name" class="java.lang.String"/>
+	<group name="school_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="sd_class_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="725" y="0" width="77" height="102"/>
+				<imageExpression><![CDATA[$F{shname}+$F{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="722" height="86" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="210" height="86" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="24" isBold="false" isItalic="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Fine DFC Report]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="218" y="0" width="500" height="22" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="219" y="24" width="500" height="40" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="219" y="66" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="470" y="66" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="90" width="722" height="32" forecolor="#000000" backcolor="#669900"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="100" height="30" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Middle">
+						<font size="16" isBold="false" isItalic="true" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[Given Date]]></text>
+				</staticText>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="535" y="12" width="144" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="100" y="0" width="100" height="30"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Serif" size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="725" y="98" width="77" height="24" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="804" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This Report for Displaying the final Daily fees collection Report on date.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="805" height="24" forecolor="#B89F7D" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="150" y="0" width="100" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Admission No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="250" y="0" width="170" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Student Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="420" y="0" width="130" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Fees Main Type]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="0" y="0" width="50" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[S.NO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="550" y="0" width="100" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Fine]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="50" y="0" width="100" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Invoice No]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="50" y="0" width="100" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{invoice_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="250" y="0" width="170" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="0" width="130" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fees_type}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="550" y="0" width="100" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fine}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="150" y="0" width="100" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admission_no}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="804" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="613" y="1" width="40" height="24" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="533" y="1" width="80" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="24" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="804" height="1"/>
+				</line>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

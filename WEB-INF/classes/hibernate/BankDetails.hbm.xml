@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.bank.BankDetails"
+		table="bank_acc_details">
+		<id name="id" type="java.lang.Integer">
+			<column name="id" />
+			<generator class="assigned" />
+		</id>
+		<property name="bankId" type="java.lang.Integer">
+			<column name="bank_id"></column>
+		</property>
+		<property name="dwDate" type="java.lang.String">
+			<column name="date" length="45"></column>
+		</property>
+		<property name="paymentType" type="java.lang.String">
+			<column name="payment_type" length="45"></column>
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="45"></column>
+		</property>
+		<property name="amt" type="java.lang.String">
+			<column name="amt" length="45"></column>
+		</property>
+		<property name="remarks" type="java.lang.String">
+			<column name="remarks" length="300"></column>
+		</property>
+		<property name="bankName" type="java.lang.String"
+			formula="(SELECT b.BANK_NAME FROM bank b WHERE b.id = BANK_ID)" />
+	</class>
+</hibernate-mapping>

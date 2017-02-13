@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StuPerReport" language="groovy" pageWidth="1245" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1205" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="85"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica">
+
+	</style>
+	<parameter name="date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     concat('STAFF-','00',staff_details.`staff_id`) AS empno,
+     staff_details.`first_name` AS std_first_name,
+     staff_attendance_details.`attendance_date` AS attendance_date,
+     staff_attendance_details.`attendance_status` AS attendance_status,
+     staff_attendance_details.`attendance_reason` AS attendance_reason,
+     staff_attendance_details.`staff_id` AS staff_id,
+     staff_details.`mobile` AS mobile,
+     staff_details.`dept` AS std_dept,
+     staff_details.`designation` AS std_designation,
+     staff_details.`second_name` AS std_second_name,
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     staff_attendance_details.`is_approved` AS std_is_approved
+FROM
+     `staff_details` staff_details INNER JOIN `staff_attendance_details` staff_attendance_details ON staff_details.`staff_id` = staff_attendance_details.`staff_id`,
+     `school_details` school_details
+WHERE
+     attendance_date = $P{date}
+ AND str_to_date(attendance_date,'%d/%m/%Y') = str_to_date($P{date},'%d/%m/%Y')]]>
+	</queryString>
+	<field name="empno" class="java.lang.String"/>
+	<field name="std_first_name" class="java.lang.String"/>
+	<field name="attendance_date" class="java.lang.String"/>
+	<field name="attendance_status" class="java.lang.String"/>
+	<field name="attendance_reason" class="java.lang.String"/>
+	<field name="staff_id" class="java.lang.Long"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="std_dept" class="java.lang.String"/>
+	<field name="std_designation" class="java.lang.String"/>
+	<field name="std_second_name" class="java.lang.String"/>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="std_is_approved" class="java.lang.String"/>
+	<group name="school_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="sd_class_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="960" y="0" width="77" height="102"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="950" height="86" forecolor="#333333" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Title" mode="Transparent" x="0" y="0" width="400" height="66" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="30" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Staff Attendance Details Report]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="432" y="0" width="500" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="433" y="22" width="500" height="40" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="433" y="64" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="684" y="64" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="90" width="950" height="32" forecolor="#333333" backcolor="#669900"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement mode="Transparent" x="750" y="12" width="144" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="25" y="8" width="120" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Attendance Date]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Transparent" x="145" y="8" width="100" height="24" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{attendance_date}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<rectangle>
+				<reportElement mode="Transparent" x="1100" y="24" width="77" height="24" forecolor="#333333" backcolor="#666666"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Transparent" x="1100" y="24" width="77" height="24" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="1205" height="24" forecolor="#333333" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="105" y="0" width="130" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Staff Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="585" y="0" width="150" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Attendance Status]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="735" y="0" width="200" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Attendance Reason]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="935" y="0" width="150" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Approval / Unapproval]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="1085" y="0" width="120" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Contact No]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="385" y="0" width="200" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Department]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="0" y="0" width="105" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[EMP NO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Transparent" x="235" y="0" width="150" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Designation]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="0" width="100" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{empno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="99" y="0" width="100" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{std_first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="199" y="0" width="36" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{std_second_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="235" y="0" width="150" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{std_designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="385" y="0" width="200" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{std_dept}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="585" y="0" width="150" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{attendance_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="735" y="0" width="200" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{attendance_reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="935" y="0" width="150" height="20" forecolor="#333333" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{std_is_approved}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="1085" y="0" width="120" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="1205" height="25" forecolor="#333333" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" mode="Transparent" x="1125" y="3" width="40" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" mode="Transparent" x="1045" y="3" width="80" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" mode="Transparent" x="2" y="3" width="197" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

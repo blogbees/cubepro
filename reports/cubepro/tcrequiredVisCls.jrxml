@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="tcrequired" language="groovy" pageWidth="3140" pageHeight="1212" orientation="Landscape" columnWidth="3100" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="1516"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="clsid" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     concat(class_details.`class_name`,'-',class_details.`section_name`) AS clsec,
+     concat(student_details.`student_name`,' ',student_details.`last_name`,'.') AS stname,
+     class_details.`class_id` AS class_id,
+     class_details.`class_name` AS class_name,
+     class_details.`section_name` AS section_name,
+     school_details.`school_name` AS schname,
+     school_details.`address1` AS schaddress1,
+     student_details.`student_name` AS sname,
+     student_details.`dob` AS dob,
+     student_details.`doj` AS doj,
+     student_details.`father_name` AS fname,
+     student_details.`mother_name` AS mname,
+     student_details.`guardian_name` AS gname,
+     student_details.`address_1` AS stuaddress1,
+     student_details.`address_2` AS address2,
+     student_details.`city` AS city,
+     student_details.`state` AS state,
+     student_details.`country` AS country,
+     student_details.`zipCode` AS zipCode,
+     student_details.`phone` AS phone,
+     student_details.`mobile1` AS mobile1,
+     student_details.`class_id` AS classid,
+     student_details.`course_ids` AS courseids,
+     student_details.`gender` AS gender,
+     student_details.`status` AS status,
+     student_details.`photo` AS photo,
+     student_details.`caste` AS caste,
+     student_details.`religion` AS religion,
+     student_details.`nationality` AS nationality,
+     student_details.`mother_tongue` AS mothertongue,
+     student_details.`first_language` AS firstlanguage,
+     student_details.`second_language` AS secondlanguage,
+     student_details.`third_language` AS thirdlanguage,
+     student_details.`blood_group` AS bloodgroup,
+     student_details.`admission_no` AS admissionno,
+     student_details.`physical_status` AS phystatus,
+     student_details.`scholarship` AS scholarship,
+     student_details.`prev_inst` AS previnst,
+     student_details.`prev_inst_reason` AS previnstreason,
+     student_details.`iden_mark1` AS idenmark1,
+     student_details.`iden_mark2` AS idenmark2,
+     student_details.`remarks` AS remarks,
+     student_details.`landline1` AS landline1,
+     student_details.`mobile2` AS mobile2,
+     student_details.`landline2` AS landline2,
+     student_details.`office2` AS office2,
+     student_details.`altemail` AS altemail,
+     student_details.`email` AS email,
+     student_details.`last_name` AS lname,
+     student_details.`medium` AS medium,
+     student_details.`category` AS category,
+     student_details.`sub_category` AS subcategory,
+     student_details.`reg_ser_no` AS regserno,
+     student_details.`is_using_transport` AS isusingtransport,
+     student_details.`is_using_hostel` AS isusinghostel,
+     student_details.`is_using_library` AS isusingibrary,
+     student_details.`is_using_lab` AS isusinglab,
+     student_details.`route_stop_id` AS routestopid,
+     student_details.`room_id` AS roomid,
+     student_details.`is_using_scholar` AS isusingscholar,
+     student_details.`scholar1` AS scholar1,
+     student_details.`pta` AS pta
+FROM
+     `class_details` class_details INNER JOIN `student_details` student_details ON class_details.`class_id` = student_details.`class_id`,
+     `school_details` school_details
+Where
+     class_details.`class_id` = $P{clsid}
+Order by
+     student_details.`reg_ser_no`]]>
+	</queryString>
+	<field name="clsec" class="java.lang.String"/>
+	<field name="stname" class="java.lang.String"/>
+	<field name="class_id" class="java.lang.Long"/>
+	<field name="class_name" class="java.lang.String"/>
+	<field name="section_name" class="java.lang.String"/>
+	<field name="schname" class="java.lang.String"/>
+	<field name="schaddress1" class="java.lang.String"/>
+	<field name="sname" class="java.lang.String"/>
+	<field name="dob" class="java.lang.String"/>
+	<field name="doj" class="java.lang.String"/>
+	<field name="fname" class="java.lang.String"/>
+	<field name="mname" class="java.lang.String"/>
+	<field name="gname" class="java.lang.String"/>
+	<field name="stuaddress1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="zipCode" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile1" class="java.lang.String"/>
+	<field name="classid" class="java.lang.Long"/>
+	<field name="courseids" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
+	<field name="status" class="java.lang.Long"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="caste" class="java.lang.String"/>
+	<field name="religion" class="java.lang.String"/>
+	<field name="nationality" class="java.lang.String"/>
+	<field name="mothertongue" class="java.lang.String"/>
+	<field name="firstlanguage" class="java.lang.String"/>
+	<field name="secondlanguage" class="java.lang.String"/>
+	<field name="thirdlanguage" class="java.lang.String"/>
+	<field name="bloodgroup" class="java.lang.String"/>
+	<field name="admissionno" class="java.lang.String"/>
+	<field name="phystatus" class="java.lang.String"/>
+	<field name="scholarship" class="java.lang.String"/>
+	<field name="previnst" class="java.lang.String"/>
+	<field name="previnstreason" class="java.lang.String"/>
+	<field name="idenmark1" class="java.lang.String"/>
+	<field name="idenmark2" class="java.lang.String"/>
+	<field name="remarks" class="java.lang.String"/>
+	<field name="landline1" class="java.lang.String"/>
+	<field name="mobile2" class="java.lang.String"/>
+	<field name="landline2" class="java.lang.String"/>
+	<field name="office2" class="java.lang.String"/>
+	<field name="altemail" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="lname" class="java.lang.String"/>
+	<field name="medium" class="java.lang.String"/>
+	<field name="category" class="java.lang.String"/>
+	<field name="subcategory" class="java.lang.String"/>
+	<field name="regserno" class="java.lang.String"/>
+	<field name="isusingtransport" class="java.lang.String"/>
+	<field name="isusinghostel" class="java.lang.String"/>
+	<field name="isusingibrary" class="java.lang.String"/>
+	<field name="isusinglab" class="java.lang.String"/>
+	<field name="routestopid" class="java.lang.Long"/>
+	<field name="roomid" class="java.lang.Long"/>
+	<field name="isusingscholar" class="java.lang.String"/>
+	<field name="scholar1" class="java.lang.String"/>
+	<field name="pta" class="java.lang.String"/>
+	<group name="student_details_student_id">
+		<groupExpression><![CDATA[]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="110" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="1207" y="35" width="700" height="40"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{schaddress1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="1157" y="0" width="800" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{schname}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1156" y="75" width="800" height="35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[REGISTER OF ADMISSIONS AND WITHDRAWALS]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="2850" y="0" width="250" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="120" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ADMISSION NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="180" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HOUSE OF VILLAGE NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME OF PARENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="600" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME OF GUARDIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="750" y="0" width="200" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RESIDENCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="950" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OCCUPATION OF PARENTS/GUARDIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1100" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SCHOOL AND CLASS FROM WHICH PUPIL HAS COME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1250" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WHETHER AN E.SIC. ISSUEDBY THE DEPT.WAS PRODUCED ON ADMMISSION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1400" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WHETHER AN T.C FROM A SECONDARY SCHOOL WAS PRODUCED ON ASSMISSION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1550" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE OF ADMISSION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1650" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE OF BIRTH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1750" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WHETHER PROCTED FROM SMALLPOX OR NOT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1900" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RELIGION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2000" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COMMUNITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2100" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MOTHER TONGUE OF THE PUPIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2200" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLASS ON ADMISSION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2300" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO & DATE OF TC PRODUCED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2450" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLASS ON LEAVING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2550" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE OF LEAVING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2650" y="0" width="150" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO & DATE OF TC ISSUED]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2800" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REASONS FOR LEAVING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2900" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SCHOOL TO WHICH THE PUPIL HAS GONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3000" y="0" width="100" height="60"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REMARKS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="44" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="120" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{admissionno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="2" width="180" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="2" width="150" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="22" width="150" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="600" y="2" width="150" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{gname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="750" y="2" width="200" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1100" y="2" width="150" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{previnst}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1550" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{doj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1650" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1900" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{religion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2000" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{category}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="2100" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mothertongue}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="43" width="3100" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="3100" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="3000" y="2" width="100" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="2" width="150" height="40"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuaddress1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="2894" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="2991" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

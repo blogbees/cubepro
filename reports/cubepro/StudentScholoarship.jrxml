@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TotalFeesCollectiongSchoolDetails" language="groovy" pageWidth="850" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="810" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<queryString>
+		<![CDATA[SELECT
+     CONCAT(class_details_A.`class_name`,' - ',class_details_A.`section_name`) AS clsec,
+     CONCAT(student_details.`student_name`,' . ',student_details.`last_name`) AS name,
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     class_details_A.`class_name` AS class_name,
+     class_details_A.`section_name` AS section_name,
+     school_details.`host_name` AS shname,
+     student_details.`student_id` AS student_id,
+     student_details.`student_name` AS sname,
+     student_details.`class_id` AS class_id,
+     student_details.`admission_no` AS admission_no,
+     student_details.`last_name` AS lname,
+     student_details.`is_using_scholar` AS scholar,
+     student_details.`scholar1` AS scholar1,
+     student_details.`scholar_reason` AS reason
+FROM
+     `student_details` student_details INNER JOIN `class_details` class_details_A ON student_details.`class_id` = class_details_A.`class_id`,
+     `school_details` school_details
+WHERE
+     student_details.`is_using_scholar` = 'YES'
+GROUP BY
+     student_details.`student_id`
+ORDER BY
+     student_details.`class_id` ASC]]>
+	</queryString>
+	<field name="clsec" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="class_name" class="java.lang.String"/>
+	<field name="section_name" class="java.lang.String"/>
+	<field name="shname" class="java.lang.String"/>
+	<field name="student_id" class="java.lang.Long"/>
+	<field name="sname" class="java.lang.String"/>
+	<field name="class_id" class="java.lang.Long"/>
+	<field name="admission_no" class="java.lang.String"/>
+	<field name="lname" class="java.lang.String"/>
+	<field name="scholar" class="java.lang.String"/>
+	<field name="scholar1" class="java.lang.String"/>
+	<field name="reason" class="java.lang.String"/>
+	<group name="school_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="sd_class_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="725" y="0" width="77" height="102"/>
+				<imageExpression><![CDATA[$F{shname}+$F{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="722" height="86" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="218" height="86" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="23" isBold="false" isItalic="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Student Scholorship Report]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="218" y="0" width="500" height="22" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="219" y="24" width="500" height="40" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="219" y="66" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="470" y="66" width="250" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="90" width="722" height="32" forecolor="#000000" backcolor="#669900"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="535" y="12" width="144" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement x="725" y="98" width="77" height="24" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="804" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This Report will Display the list of Student Scholorship Amount collected on a school]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="810" height="24" forecolor="#B89F7D" backcolor="#CCCCFF"/>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="272" y="0" width="80" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Class - Sec]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="50" y="0" width="120" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Admission NO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="350" y="0" width="170" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Student Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="0" y="0" width="50" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[S.NO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="520" y="0" width="180" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Scholar Reason]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" mode="Opaque" x="700" y="0" width="110" height="24" forecolor="#333333" backcolor="#CCCCFF"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Scholar Amount]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Opaque" x="50" y="0" width="120" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{admission_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="270" y="0" width="80" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clsec}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="0" width="170" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="50" height="20" forecolor="#333333"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="520" y="0" width="180" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="700" y="0" width="110" height="20" forecolor="#333333" backcolor="#ECE9D8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{scholar1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="26" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="810" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="744" y="0" width="40" height="24" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="664" y="0" width="80" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="24" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="810" height="1"/>
+				</line>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,2 @@
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ sreeiyap_cubepro;
+USE sreeiyap_cubepro;

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.library.Book" table="book">
+		<id name="bookId" type="java.lang.Integer">
+			<column name="book_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="bookName" type="java.lang.String">
+			<column name="book_name" length="100" ></column>
+		</property>
+		<property name="author" type="java.lang.String">
+			<column name="author" length="100" ></column>
+		</property>
+		<many-to-one name="category"
+			class="com.cubepro.library.Category" fetch="select" lazy="false">
+			<column name="category_id"  />
+		</many-to-one>
+
+		<property name="notes" type="java.lang.String">
+			<column name="notes" length="245"></column>
+		</property>
+
+		<property name="stockCompanyName" type="java.lang.String">
+			<column name="company_name" length="45"></column>
+		</property>
+		<property name="rating" type="java.lang.String">
+			<column name="rating" length="45"></column>
+		</property>
+		<property name="accessionNo" type="java.lang.String">
+			<column name="accession_no" ></column>
+		</property>
+		<property name="dateOfPurchase" type="java.lang.String">
+			<column name="date_of_purchase" ></column>
+		</property>
+		<property name="cost" type="java.lang.String">
+			<column name="cost" ></column>
+		</property>
+		<property name="totalPages" type="java.lang.String">
+			<column name="total_pages" ></column>
+		</property>		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.hostel.BuildingInf" table="building_inf">
+		<id name="buildingId" type="java.lang.Integer">
+			<column name="building_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="name" length="100" not-null="true"></column>
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="100" not-null="true"></column>
+		</property>
+		<many-to-one name="staffDetails"
+			class="com.cubepro.staff.StaffDetails" fetch="select" lazy="false">
+			<column name="staff_id" not-null="true" />
+		</many-to-one>
+
+		<property name="addr" type="java.lang.String">
+			<column name="addr" length="145"></column>
+		</property>
+
+		<property name="phone1" type="java.lang.String">
+			<column name="phone1" length="45"></column>
+		</property>
+		<property name="phone2" type="java.lang.String">
+			<column name="phone2" length="45"></column>
+		</property>
+		<property name="mailId" type="java.lang.String">
+			<column name="mail_id" length="100"></column>
+		</property>
+		<property name="noOfBlocks" type="java.lang.String">
+			<column name="no_of_blocks" length="45"></column>
+		</property>
+		<property name="noOfRooms" type="java.lang.String">
+			<column name="no_of_rooms" length="45"></column>
+		</property>
+		<property name="messAmt" type="java.lang.String">
+			<column name="mess_amt" length="45"></column>
+		</property>
+		<property name="maintCharge" type="java.lang.String">
+			<column name="maint_charge" length="45"></column>
+		</property>
+		<property name="repairAmt" type="java.lang.String">
+			<column name="repair_amt" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

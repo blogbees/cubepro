@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.transport.Route" table="route_master">
+		<id name="routeId" type="java.lang.Integer">
+			<column name="route_id" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="vehicle"
+			class="com.cubepro.transport.Vehicle" fetch="select" lazy="false">
+			<column name="vehicle_id" not-null="true" />
+		</many-to-one>
+
+		<property name="routeName" type="java.lang.String">
+			<column name="route_name" length="100"></column>
+		</property>
+		<property name="startPoint" type="java.lang.String">
+			<column name="start_point" length="50"></column>
+		</property>
+		<property name="endPoint" type="java.lang.String">
+			<column name="end_point" length="50"></column>
+		</property>
+		<property name="totalKms" type="java.lang.String">
+			<column name="total_kms" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

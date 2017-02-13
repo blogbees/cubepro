@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.hostel.Room" table="room_inf">
+		<id name="roomId" type="java.lang.Integer">
+			<column name="room_id" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="buildingInf"
+			class="com.cubepro.hostel.BuildingInf" fetch="select" lazy="false">
+			<column name="building_id" />
+		</many-to-one>
+
+		<property name="roomNo" type="java.lang.String">
+			<column name="room_no" length="45"></column>
+		</property>
+		<property name="roomExtn" type="java.lang.String">
+			<column name="room_extn" length="45"></column>
+		</property>
+
+		<property name="strength" type="java.lang.String">
+			<column name="strength" length="45"></column>
+		</property>
+		<property name="assets" type="java.lang.String">
+			<column name="assets" length="145"></column>
+		</property>
+		<property name="bathroomAtt" type="java.lang.String">
+			<column name="is_bathroom_att" length="100"></column>
+		</property>
+		<property name="roomCost" type="java.lang.String">
+			<column name="cost" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

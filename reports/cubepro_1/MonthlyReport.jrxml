@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StuPerReport" language="groovy" pageWidth="920" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="880" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.1"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica">
+
+	</style>
+	<parameter name="fdate" class="java.lang.String"/>
+	<parameter name="tdate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     transaction_details.`trans_desc` AS trans_desc,
+     transaction_details.`amount` AS amount,
+     transaction_details.`trans_type` AS trans_type,
+     transaction_details.`payment_type` AS payment_type,
+     (prev_cash_bal+prev_bank_bal)open_balance,
+     (prev_cash_bal+prev_bank_bal)open_balance,
+     (prev_cash_bal+prev_bank_bal)open_balance,
+     (tot_cash_bal+tot_bank_bal)close_balance,
+     tot_cash_bal,
+     tot_bank_bal,
+     prev_cash_bal,
+     prev_bank_bal,
+     sum(case when transaction_code like '%INCOME%' then  abs(transaction_details.`amount`) else 0 end) as income,
+     sum(case when transaction_code like '%EXPENSE%' then  abs(transaction_details.`amount`) else 0 end) as expence
+FROM
+     `transaction_details` transaction_details,
+     `school_details` school_details,
+     (SELECT SUM(CASE WHEN TRANSACTION_CODE = 'CASH INCOME' THEN abs(AMOUNT) ELSE 0 END) - SUM(CASE WHEN TRANSACTION_CODE = 'CASH EXPENSE' THEN abs(AMOUNT) ELSE 0 END) tot_cash_bal FROM transaction_details t) tot_cash_bal,
+     (SELECT SUM(CASE WHEN TRANSACTION_CODE = 'BANK INCOME' THEN abs(AMOUNT) ELSE 0 END) - SUM(CASE WHEN TRANSACTION_CODE = 'BANK EXPENSE' THEN abs(AMOUNT) ELSE 0 END) tot_bank_bal FROM transaction_details t) tot_bank_bal,
+     (SELECT SUM(CASE WHEN TRANSACTION_CODE = 'CASH INCOME' AND str_to_date(trans_date,'%d/%m/%Y') < str_to_date($P{fdate},'%d/%m/%Y') THEN abs(AMOUNT) ELSE 0 END) - SUM(CASE WHEN TRANSACTION_CODE = 'CASH EXPENSE' AND str_to_date(trans_date,'%d/%m/%Y') < str_to_date($P{fdate},'%d/%m/%Y') THEN abs(AMOUNT) ELSE 0 END) prev_cash_bal FROM transaction_details t) prev_cash_bal,
+     (SELECT SUM(CASE WHEN TRANSACTION_CODE = 'BANK INCOME' AND str_to_date(trans_date,'%d/%m/%Y') < str_to_date($P{fdate},'%d/%m/%Y') THEN abs(AMOUNT) ELSE 0 END) - SUM(CASE WHEN TRANSACTION_CODE = 'BANK EXPENSE' AND str_to_date(trans_date,'%d/%m/%Y') < str_to_date($P{fdate},'%d/%m/%Y') THEN abs(AMOUNT) ELSE 0 END)  prev_bank_bal FROM transaction_details t) prev_bank_bal
+
+WHERE
+str_to_date(trans_date,'%d/%m/%Y') >= str_to_date($P{fdate},'%d/%m/%Y')
+and str_to_date(trans_date,'%d/%m/%Y') <= str_to_date($P{tdate},'%d/%m/%Y')
+group by
+     transaction_details.`trans_desc` ,
+     transaction_code]]>
+	</queryString>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="trans_desc" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<field name="trans_type" class="java.lang.String"/>
+	<field name="payment_type" class="java.lang.String"/>
+	<field name="open_balance" class="java.lang.Double"/>
+	<field name="close_balance" class="java.lang.Double"/>
+	<field name="tot_cash_bal" class="java.lang.Double"/>
+	<field name="tot_bank_bal" class="java.lang.Double"/>
+	<field name="prev_cash_bal" class="java.lang.Double"/>
+	<field name="prev_bank_bal" class="java.lang.Double"/>
+	<field name="income" class="java.lang.Double"/>
+	<field name="expence" class="java.lang.Double"/>
+	<variable name="sumcincome" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{income}]]></variableExpression>
+	</variable>
+	<variable name="sumcexpense" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{expence}]]></variableExpression>
+	</variable>
+	<variable name="expense" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{sumcincome}-$V{sumcexpense}]]></variableExpression>
+	</variable>
+	<variable name="texpense" class="java.lang.Double">
+		<variableExpression><![CDATA[$V{sumcexpense}+$V{expense}]]></variableExpression>
+	</variable>
+	<group name="school_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="sd_class_id">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<image onErrorType="Blank">
+				<reportElement x="613" y="0" width="77" height="102"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="610" height="86" backcolor="#000000"/>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="300" y="64" width="150" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="451" y="64" width="150" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="300" y="0" width="300" height="20" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="300" y="22" width="300" height="40" forecolor="#333333" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="300" height="64" forecolor="#333333"/>
+					<box topPadding="4" leftPadding="4" bottomPadding="4" rightPadding="4"/>
+					<textElement verticalAlignment="Bottom">
+						<font size="20" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Monthly/Quartely/Halfely & Annual  Account Report]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="90" width="610" height="32" forecolor="#000000" backcolor="#669900"/>
+				<textField isBlankWhenNull="true">
+					<reportElement x="340" y="5" width="60" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{prev_bank_bal}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="520" y="5" width="60" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{open_balance}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="140" y="5" width="60" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{prev_cash_bal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="400" y="5" width="120" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Opening Balance]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="0" y="5" width="140" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Opening Cash Balance]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="200" y="5" width="140" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Opening Bank Balance]]></text>
+				</staticText>
+			</frame>
+			<rectangle>
+				<reportElement mode="Transparent" x="800" y="18" width="70" height="24" backcolor="#666666"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="800" y="18" width="70" height="24" forecolor="#333333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+			<frame>
+				<reportElement mode="Transparent" x="690" y="50" width="190" height="72" forecolor="#000000" backcolor="#669900"/>
+				<textField>
+					<reportElement x="90" y="0" width="100" height="25" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{fdate}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="90" y="48" width="100" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$P{tdate}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement style="Column header" x="690" y="50" width="80" height="25" forecolor="#333333"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[From Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="690" y="95" width="80" height="25" forecolor="#333333"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[To Date]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="880" height="24" forecolor="#B89F7D" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="340" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Particulars]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="340" y="0" width="120" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Income]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="460" y="0" width="120" height="24" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Expence]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement mode="Transparent" x="0" y="0" width="340" height="20" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{trans_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="340" y="0" width="120" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{income}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="460" y="0" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{expence}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement mode="Transparent" x="580" y="0" width="300" height="20" forecolor="#D0B48E" backcolor="#000000"/>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="880" height="25" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="395" y="0" width="40" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="315" y="0" width="80" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="3" width="197" height="20" forecolor="#333333"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="80" splitType="Stretch">
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="880" height="80" forecolor="#B89F7D" backcolor="#000000"/>
+				<staticText>
+					<reportElement style="Column header" x="240" y="40" width="100" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Totals]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="340" y="0" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{sumcincome}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="0" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{sumcexpense}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="20" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{expense}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="40" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{texpense}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="340" y="40" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{sumcincome}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="2" y="60" width="140" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Closing Cash Balance]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="140" y="60" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_cash_bal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="295" y="60" width="140" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Closing Bank Balance]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="435" y="60" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{tot_bank_bal}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="582" y="60" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle"/>
+					<text><![CDATA[Closing Balance]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement x="702" y="60" width="120" height="20" forecolor="#333333"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.Double"><![CDATA[$F{close_balance}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>

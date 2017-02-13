@@ -1,0 +1,18 @@
+<!DOCTYPE dwr PUBLIC
+    "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN"
+    "http://getahead.org/dwr/dwr20.dtd">
+<dwr>
+	<allow>
+		<create creator="new" javascript="ReportParameter">
+			<param name="class"
+				value="java.cubepro.reports.ReportParameter" />
+		</create>
+		
+		<create creator="new" javascript="ReportParameter" >
+			<param name="class"
+				value="java.cubepro.reports.ReportParameter" />
+		</create>
+		
+		
+	</allow>
+</dwr>

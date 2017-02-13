@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.transport.Vehicle" table="vehicle_master">
+		<id name="vehicleId" type="java.lang.Integer">
+			<column name="vehicle_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="regNo" type="java.lang.String">
+			<column name="reg_no" length="100" not-null="true"></column>
+		</property>
+		<property name="regName" type="java.lang.String">
+			<column name="reg_name" length="100" not-null="true">
+			</column>
+		</property>
+
+		<property name="regDate" type="java.lang.String">
+			<column name="reg_date" length="45"></column>
+		</property>
+
+		<property name="make" type="java.lang.String">
+			<column name="make" length="45"></column>
+		</property>
+		<property name="model" type="java.lang.String">
+			<column name="model" length="45"></column>
+		</property>
+		<property name="color" type="java.lang.String">
+			<column name="color" length="45"></column>
+		</property>
+		<property name="engineType" type="java.lang.String">
+			<column name="engine_type" length="45"></column>
+		</property>
+		<property name="engineNo" type="java.lang.String">
+			<column name="engine_no" length="45"></column>
+		</property>
+		<property name="insuredDate" type="java.lang.String">
+			<column name="insured_date" length="45"></column>
+		</property>
+		<property name="renewalDate" type="java.lang.String">
+			<column name="renewal_date" length="45"></column>
+		</property>
+		<property name="totalSeats" type="java.lang.String">
+			<column name="total_seats" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

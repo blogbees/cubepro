@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StudentID" language="groovy" pageWidth="400" pageHeight="500" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="101"/>
+	<parameter name="rollno" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     concat('STU-',class_details.class_name,'-',class_details.section_name,'-00',student_details.student_id) AS NewRollNo,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`city` AS city,
+     school_details.`state` AS state,
+     school_details.`country` AS country,
+     school_details.`zipCode` AS zipCode,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`mobileNo` AS mobileNo,
+     school_details.`faxNo` AS faxNo,
+     school_details.`email` AS email,
+     school_details.`website` AS website,
+     school_details.`principal` AS principal,
+     school_details.`govt_reg_no` AS govt_reg_no,
+     class_details.`class_name` AS class_name,
+     class_details.`section_name` AS section_name,
+     student_details.`student_name` AS student_name,
+     student_details.`roll_no` AS roll_no,
+     student_details.`dob` AS dob,
+     student_details.`phone` AS phone,
+     student_details.`mobile1` AS mobile1,
+     student_details.`gender` AS gender,
+     student_details.`blood_group` AS blood_group,
+     student_details.`admission_no` AS admno,
+     student_details.`last_name` AS last_name,
+     school_details.`logo` AS logo,
+     student_details.`photo` AS photo
+FROM
+     `class_details` class_details INNER JOIN `student_details` student_details ON class_details.`class_id` = student_details.`class_id`,
+     `school_details` school_details
+WHERE
+     student_details.`admission_no` = $P{rollno}]]>
+	</queryString>
+	<field name="NewRollNo" class="java.lang.String"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="zipCode" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="mobileNo" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="principal" class="java.lang.String"/>
+	<field name="govt_reg_no" class="java.lang.String"/>
+	<field name="class_name" class="java.lang.String"/>
+	<field name="section_name" class="java.lang.String"/>
+	<field name="student_name" class="java.lang.String"/>
+	<field name="roll_no" class="java.lang.String"/>
+	<field name="dob" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile1" class="java.lang.String"/>
+	<field name="gender" class="java.lang.String"/>
+	<field name="blood_group" class="java.lang.String"/>
+	<field name="admno" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="photo" class="java.lang.String"/>
+	<variable name="stupic" class="java.lang.String" incrementType="Report" calculation="System">
+		<variableExpression><![CDATA[$F{photo}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{photo}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="460" splitType="Stretch">
+			<rectangle>
+				<reportElement x="10" y="15" width="340" height="200"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="15" width="340" height="90" forecolor="#FFFFFF" backcolor="#000000"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="245" width="340" height="200"/>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="90" y="16" width="250" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="90" y="36" width="250" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="90" y="56" width="125" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="215" y="56" width="125" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{zipCode}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="106" width="340" height="1"/>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="22" y="84" width="74" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="98" y="84" width="68" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mobileNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="170" y="84" width="70" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{faxNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="243" y="84" width="100" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="115" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="140" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roll No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="165" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Admission No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="23" y="190" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Class/Sec]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="86" y="115" width="120" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{student_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="88" y="140" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NewRollNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="88" y="190" width="49" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{class_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="140" y="190" width="41" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{section_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="242" y="192" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{principal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="182" y="190" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Principal:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="265" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DOB:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="299" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="265" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dob}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="111" y="333" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{blood_group}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="370" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{phone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="112" y="405" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{mobile1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="299" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gender:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="333" width="77" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Blood Group:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="21" y="370" width="58" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone No:]]></text>
+			</staticText>
+			<line>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="230" width="360" height="1" backcolor="#99CCFF"/>
+			</line>
+			<image onErrorType="Blank">
+				<reportElement x="243" y="110" width="90" height="80"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{photo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement x="89" y="165" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{admno}]]></textFieldExpression>
+			</textField>
+			<image onErrorType="Blank">
+				<reportElement x="16" y="17" width="60" height="60"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<image onErrorType="Blank">
+				<reportElement x="273" y="350" width="50" height="50"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{photo}]]></imageExpression>
+			</image>
+			<rectangle radius="10">
+				<reportElement x="247" y="408" width="100" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement x="206" y="115" width="30" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

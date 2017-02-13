@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.library.StaffLendDetails" table="staff_lend_details">
+		<id name="staffLendDetailsId" type="java.lang.Integer">
+			<column name="staff_lend_id" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="bookDetails"
+			class="com.cubepro.library.Book" fetch="select" lazy="false">
+			<column name="book_id"  />
+		</many-to-one>
+		<many-to-one name="staffDetails"
+			class="com.cubepro.staff.StaffDetails" fetch="select" lazy="false">
+			<column name="staff_id"  />
+		</many-to-one>
+
+		<property name="status"	 type="java.lang.String">
+			<column name="status" length="45"></column>
+		</property>
+
+		<property name="lendDate" type="java.lang.String" update="false">
+			<column name="lend_dt" length="45"></column>
+		</property>
+		<property name="returnDate" type="java.lang.String" insert="false">
+			<column name="return_dt" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

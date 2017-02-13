@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.hostel.Visitor" table="visitor">
+		<id name="visitorId" type="java.lang.Integer">
+			<column name="visitor_id" />
+			<generator class="assigned" />
+		</id>
+		<many-to-one name="room"
+			class="com.cubepro.hostel.Room" fetch="select" lazy="false">
+			<column name="room_id" />
+		</many-to-one>
+
+		<property name="visitorName" type="java.lang.String">
+			<column name="visitor_name" length="45"></column>
+		</property>
+		<property name="relation" type="java.lang.String">
+			<column name="relation" length="45"></column>
+		</property>
+
+		<property name="inDate" type="java.lang.String">
+			<column name="in_date" length="45"></column>
+		</property>
+		<property name="inTime" type="java.lang.String">
+			<column name="in_time" length="45"></column>
+		</property>
+		<property name="outTime" type="java.lang.String">
+			<column name="out_time" length="45"></column>
+		</property>
+		<property name="whotosee" type="java.lang.String">
+			<column name="whotosee" length="45"></column>
+		</property>
+		<property name="seetype" type="java.lang.String">
+			<column name="seetype" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

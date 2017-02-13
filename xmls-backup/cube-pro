@@ -1,0 +1,565 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.0.12-beta-nt
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema cubepro
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ cubepro;
+USE cubepro;
+
+--
+-- Table structure for table `cubepro`.`attendance_details`
+--
+
+DROP TABLE IF EXISTS `attendance_details`;
+CREATE TABLE `attendance_details` (
+  `attn_id` int(10) unsigned NOT NULL auto_increment,
+  `attn_date` datetime NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `attn_status` varchar(45) NOT NULL default 'ABSENT',
+  `attn_reason` varchar(45) default NULL,
+  `create_date` datetime NOT NULL,
+  PRIMARY KEY  (`attn_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`attendance_details`
+--
+
+/*!40000 ALTER TABLE `attendance_details` DISABLE KEYS */;
+INSERT INTO `attendance_details` (`attn_id`,`attn_date`,`student_id`,`attn_status`,`attn_reason`,`create_date`) VALUES 
+ (2,'2009-06-07 00:00:00',12,'Absent','Fever','2009-06-07 13:20:13'),
+ (3,'2009-06-07 00:00:00',11,'Absent','Fever','2009-06-07 13:20:24'),
+ (4,'2009-01-01 00:00:00',11,'Absent','','2009-06-07 21:27:23');
+/*!40000 ALTER TABLE `attendance_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`class_details`
+--
+
+DROP TABLE IF EXISTS `class_details`;
+CREATE TABLE `class_details` (
+  `class_id` int(10) unsigned NOT NULL auto_increment,
+  `class_name` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `section_name` varchar(45) NOT NULL,
+  `class_fee` double NOT NULL,
+  PRIMARY KEY  (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`class_details`
+--
+
+/*!40000 ALTER TABLE `class_details` DISABLE KEYS */;
+INSERT INTO `class_details` (`class_id`,`class_name`,`create_date`,`section_name`,`class_fee`) VALUES 
+ (6,'I','2009-06-08 23:55:19','A',0),
+ (7,'III','2009-06-08 23:56:11','A',0);
+/*!40000 ALTER TABLE `class_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`class_time_table`
+--
+
+DROP TABLE IF EXISTS `class_time_table`;
+CREATE TABLE `class_time_table` (
+  `class_tt_id` int(10) unsigned NOT NULL auto_increment,
+  `class_id` int(10) unsigned NOT NULL,
+  `day_id` int(10) unsigned NOT NULL,
+  `cws_id_1` varchar(45) NOT NULL,
+  `cws_id_2` varchar(45) NOT NULL,
+  `cws_id_3` varchar(45) NOT NULL,
+  `cws_id_4` varchar(45) NOT NULL,
+  `cws_id_5` varchar(45) NOT NULL,
+  `cws_id_6` varchar(45) NOT NULL,
+  `cws_id_7` varchar(45) NOT NULL,
+  `cws_id_8` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  PRIMARY KEY  (`class_tt_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`class_time_table`
+--
+
+/*!40000 ALTER TABLE `class_time_table` DISABLE KEYS */;
+INSERT INTO `class_time_table` (`class_tt_id`,`class_id`,`day_id`,`cws_id_1`,`cws_id_2`,`cws_id_3`,`cws_id_4`,`cws_id_5`,`cws_id_6`,`cws_id_7`,`cws_id_8`,`create_date`) VALUES 
+ (1,17,1,'English','English','Physics','English','English','English','English','English','2009-06-05 00:00:14'),
+ (2,17,2,'English','English','English','English','English','English','English','English','2009-06-05 00:00:14'),
+ (3,17,3,'English','English','English','Tamil','English','English','English','English','2009-06-05 00:00:14'),
+ (4,17,4,'English','English','English','English','English','English','English','English','2009-06-05 00:00:14'),
+ (5,17,5,'English','English','English','English','English','English','English','English','2009-06-05 00:00:14'),
+ (6,17,6,'English','English','English','English','English','History','English','English','2009-06-05 00:00:14');
+/*!40000 ALTER TABLE `class_time_table` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`course_details`
+--
+
+DROP TABLE IF EXISTS `course_details`;
+CREATE TABLE `course_details` (
+  `course_id` int(10) unsigned NOT NULL auto_increment,
+  `course_name` varchar(45) NOT NULL,
+  `course_fee` double NOT NULL,
+  `create_date` datetime NOT NULL,
+  PRIMARY KEY  (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`course_details`
+--
+
+/*!40000 ALTER TABLE `course_details` DISABLE KEYS */;
+INSERT INTO `course_details` (`course_id`,`course_name`,`course_fee`,`create_date`) VALUES 
+ (1,'French',50,'0000-00-00 00:00:00'),
+ (2,'Swimming',300,'2009-04-28 03:19:22'),
+ (3,'Yoga',300,'2009-04-28 03:19:32'),
+ (4,'Spoken English',300,'2009-04-28 03:19:42'),
+ (5,'Abacus Course',300,'2009-04-28 03:19:52'),
+ (6,'Dance',120,'2009-04-28 03:20:05');
+/*!40000 ALTER TABLE `course_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`cws_details`
+--
+
+DROP TABLE IF EXISTS `cws_details`;
+CREATE TABLE `cws_details` (
+  `cws_id` int(10) unsigned NOT NULL auto_increment,
+  `class_id` varchar(45) NOT NULL,
+  `subject_id` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `cws_order` int(10) unsigned default '10',
+  PRIMARY KEY  (`cws_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`cws_details`
+--
+
+/*!40000 ALTER TABLE `cws_details` DISABLE KEYS */;
+INSERT INTO `cws_details` (`cws_id`,`class_id`,`subject_id`,`create_date`,`cws_order`) VALUES 
+ (1,'17','1','2009-05-03 00:42:12',1),
+ (4,'17','2','2009-05-03 01:29:28',2),
+ (5,'17','3','2009-05-03 02:01:06',3),
+ (6,'17','4','2009-05-03 02:01:12',4),
+ (7,'17','5','2009-05-03 14:05:57',5),
+ (8,'17','6','2009-05-05 00:31:34',6),
+ (9,'17','7','2009-05-05 00:31:41',7),
+ (10,'17','8','2009-05-05 00:36:13',8),
+ (11,'20','1','2009-06-07 20:30:29',10);
+/*!40000 ALTER TABLE `cws_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`cwsj_details`
+--
+
+DROP TABLE IF EXISTS `cwsj_details`;
+CREATE TABLE `cwsj_details` (
+  `cwsj_id` int(10) unsigned NOT NULL auto_increment,
+  `class_name` varchar(45) NOT NULL,
+  `section_name` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `cwsj_order` int(10) unsigned NOT NULL default '1',
+  PRIMARY KEY  (`cwsj_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`cwsj_details`
+--
+
+/*!40000 ALTER TABLE `cwsj_details` DISABLE KEYS */;
+INSERT INTO `cwsj_details` (`cwsj_id`,`class_name`,`section_name`,`create_date`,`cwsj_order`) VALUES 
+ (6,'I','A','2009-06-09 00:38:02',1),
+ (7,'I','B','2009-06-09 00:49:02',1);
+/*!40000 ALTER TABLE `cwsj_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`login_details`
+--
+
+DROP TABLE IF EXISTS `login_details`;
+CREATE TABLE `login_details` (
+  `login_id` int(10) unsigned NOT NULL auto_increment,
+  `userName` varchar(45) NOT NULL,
+  `passWord` varchar(45) NOT NULL,
+  PRIMARY KEY  (`login_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`login_details`
+--
+
+/*!40000 ALTER TABLE `login_details` DISABLE KEYS */;
+INSERT INTO `login_details` (`login_id`,`userName`,`passWord`) VALUES 
+ (1,'admin','admin');
+/*!40000 ALTER TABLE `login_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`mark_details`
+--
+
+DROP TABLE IF EXISTS `mark_details`;
+CREATE TABLE `mark_details` (
+  `mark_id` int(10) unsigned NOT NULL auto_increment,
+  `term_id` int(10) unsigned NOT NULL,
+  `student_id` int(10) unsigned NOT NULL,
+  `subject_id` int(10) unsigned NOT NULL,
+  `mark` double default NULL,
+  `create_date` datetime default NULL,
+  PRIMARY KEY  (`mark_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`mark_details`
+--
+
+/*!40000 ALTER TABLE `mark_details` DISABLE KEYS */;
+INSERT INTO `mark_details` (`mark_id`,`term_id`,`student_id`,`subject_id`,`mark`,`create_date`) VALUES 
+ (18,1,11,7,11,'2009-05-22 00:46:46'),
+ (19,1,11,4,11,'2009-05-22 00:46:46'),
+ (20,1,11,5,45,'2009-05-22 00:46:46'),
+ (21,1,11,2,11,'2009-05-22 00:46:46'),
+ (22,1,11,8,56,'2009-05-22 00:46:46'),
+ (23,1,11,3,11,'2009-05-22 00:46:46'),
+ (24,1,11,6,35,'2009-05-22 00:46:46'),
+ (25,1,11,1,77,'2009-05-22 00:46:46'),
+ (26,1,12,7,0,'2009-05-22 00:46:46'),
+ (27,1,12,4,22,'2009-05-22 00:46:46'),
+ (28,1,12,5,2,'2009-05-22 00:46:46'),
+ (29,1,12,2,11,'2009-05-22 00:46:46'),
+ (30,1,12,8,11,'2009-05-22 00:46:46'),
+ (31,1,12,3,11,'2009-05-22 00:46:46'),
+ (32,1,12,6,0,'2009-05-22 00:46:46'),
+ (33,1,12,1,11,'2009-05-22 00:46:46');
+/*!40000 ALTER TABLE `mark_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`report_category`
+--
+
+DROP TABLE IF EXISTS `report_category`;
+CREATE TABLE `report_category` (
+  `category_id` int(10) unsigned NOT NULL auto_increment,
+  `category_name` varchar(45) NOT NULL,
+  `category_desc` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  PRIMARY KEY  (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`report_category`
+--
+
+/*!40000 ALTER TABLE `report_category` DISABLE KEYS */;
+INSERT INTO `report_category` (`category_id`,`category_name`,`category_desc`,`create_date`) VALUES 
+ (1,'Student Reports','Reports related to students','2009-05-11 00:00:00'),
+ (2,'Printable Reports','Reports to Print','2009-05-11 00:00:00');
+/*!40000 ALTER TABLE `report_category` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`report_parameters`
+--
+
+DROP TABLE IF EXISTS `report_parameters`;
+CREATE TABLE `report_parameters` (
+  `rpt_id` int(10) unsigned NOT NULL auto_increment,
+  `report_id` int(10) unsigned NOT NULL,
+  `param_type` varchar(45) NOT NULL,
+  `param_size` int(10) unsigned default NULL,
+  `param_maxlength` int(10) unsigned default NULL,
+  `param_name` varchar(45) NOT NULL,
+  `param_position` int(10) unsigned default NULL,
+  `param_jsonclick` varchar(45) default NULL,
+  `param_query` varchar(500) default NULL,
+  `param_isCombo` int(10) unsigned default NULL,
+  `create_date` datetime default NULL,
+  `param_value` varchar(45) NOT NULL,
+  PRIMARY KEY  (`rpt_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`report_parameters`
+--
+
+/*!40000 ALTER TABLE `report_parameters` DISABLE KEYS */;
+INSERT INTO `report_parameters` (`rpt_id`,`report_id`,`param_type`,`param_size`,`param_maxlength`,`param_name`,`param_position`,`param_jsonclick`,`param_query`,`param_isCombo`,`create_date`,`param_value`) VALUES 
+ (1,1,'date',10,10,'From Date',1,NULL,NULL,NULL,'2009-05-11 00:00:00','fromDate'),
+ (2,1,'date',10,10,'To Date',2,NULL,NULL,NULL,'2009-05-11 00:00:00','toDate'),
+ (3,1,'combo',11,11,'Class With Section',3,'','SELECT cc.class_id id, concat(\"Class: \",cwd.class_name,\" Section: \",cwd.section_name)  FROM cwsj_details cwd inner join classes cc on cc.class_name = cwd.class_name order by class_id',NULL,NULL,'classList');
+/*!40000 ALTER TABLE `report_parameters` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`reports`
+--
+
+DROP TABLE IF EXISTS `reports`;
+CREATE TABLE `reports` (
+  `report_id` int(10) unsigned NOT NULL auto_increment,
+  `report_name` varchar(45) NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  `report_desc` varchar(45) NOT NULL,
+  `create_date` varchar(45) NOT NULL,
+  `report_action` varchar(45) NOT NULL,
+  PRIMARY KEY  (`report_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`reports`
+--
+
+/*!40000 ALTER TABLE `reports` DISABLE KEYS */;
+INSERT INTO `reports` (`report_id`,`report_name`,`category_id`,`report_desc`,`create_date`,`report_action`) VALUES 
+ (1,'Student Attendance Report',1,'Attendance Details of Students','2009-05-11','studentAttendanceJT.do');
+/*!40000 ALTER TABLE `reports` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`school_details`
+--
+
+DROP TABLE IF EXISTS `school_details`;
+CREATE TABLE `school_details` (
+  `school_id` int(10) unsigned NOT NULL auto_increment,
+  `school_name` varchar(45) NOT NULL,
+  `address1` varchar(45) NOT NULL,
+  `address2` varchar(45) default NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `zipCode` varchar(45) NOT NULL,
+  `phoneNo1` varchar(45) default NULL,
+  `phoneNo2` varchar(45) default NULL,
+  `mobileNo` varchar(45) default NULL,
+  `faxNo` varchar(45) default NULL,
+  `email` varchar(45) default NULL,
+  `website` varchar(45) default NULL,
+  `create_date` datetime NOT NULL,
+  `noOfWorkingDays` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`school_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`school_details`
+--
+
+/*!40000 ALTER TABLE `school_details` DISABLE KEYS */;
+INSERT INTO `school_details` (`school_id`,`school_name`,`address1`,`address2`,`city`,`state`,`country`,`zipCode`,`phoneNo1`,`phoneNo2`,`mobileNo`,`faxNo`,`email`,`website`,`create_date`,`noOfWorkingDays`) VALUES 
+ (3,'St Mary\'s Boys Higher Sec School','N0 103 , M H road, chennai','','Chennai','Tamil Nadu','India','600011','04445042225','','','9789089437','stmarys@gmail.com','www.stmarys.com','2009-05-05 00:35:48',239),
+ (4,'Test School Matriculation','No Test','No Test','Chennai','Tamil Nadu','India','600011','04445042225','','','9789089437','test@localhost.com','www.cubicletech.com','2009-06-07 16:25:56',156),
+ (5,'','','','','','','','','','','','','','2009-06-07 19:17:53',0);
+/*!40000 ALTER TABLE `school_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`sections`
+--
+
+DROP TABLE IF EXISTS `sections`;
+CREATE TABLE `sections` (
+  `section_id` int(10) unsigned NOT NULL auto_increment,
+  `section_name` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  PRIMARY KEY  (`section_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`sections`
+--
+
+/*!40000 ALTER TABLE `sections` DISABLE KEYS */;
+INSERT INTO `sections` (`section_id`,`section_name`,`create_date`) VALUES 
+ (1,'A','2009-06-08 23:59:24'),
+ (2,'B','2009-06-08 23:59:31');
+/*!40000 ALTER TABLE `sections` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`smsserver_calls`
+--
+
+DROP TABLE IF EXISTS `smsserver_calls`;
+CREATE TABLE `smsserver_calls` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `call_date` datetime NOT NULL,
+  `gateway_id` varchar(64) NOT NULL,
+  `caller_id` varchar(16) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cubepro`.`smsserver_calls`
+--
+
+/*!40000 ALTER TABLE `smsserver_calls` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smsserver_calls` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`smsserver_out`
+--
+
+DROP TABLE IF EXISTS `smsserver_out`;
+CREATE TABLE `smsserver_out` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `type` varchar(1) NOT NULL default 'O',
+  `recipient` varchar(16) NOT NULL,
+  `text` varchar(1000) NOT NULL,
+  `wap_url` varchar(100) default NULL,
+  `wap_expiry_date` datetime default NULL,
+  `wap_signal` varchar(1) default NULL,
+  `create_date` datetime NOT NULL,
+  `originator` varchar(16) NOT NULL default ' ',
+  `encoding` varchar(1) NOT NULL default '7',
+  `status_report` int(1) NOT NULL default '0',
+  `flash_sms` int(1) NOT NULL default '0',
+  `src_port` int(6) NOT NULL default '-1',
+  `dst_port` int(6) NOT NULL default '-1',
+  `sent_date` datetime default NULL,
+  `ref_no` varchar(64) default NULL,
+  `priority` int(5) NOT NULL default '0',
+  `status` varchar(1) NOT NULL default 'U',
+  `errors` int(2) NOT NULL default '0',
+  `gateway_id` varchar(64) NOT NULL default '*',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cubepro`.`smsserver_out`
+--
+
+/*!40000 ALTER TABLE `smsserver_out` DISABLE KEYS */;
+/*!40000 ALTER TABLE `smsserver_out` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`student_details`
+--
+
+DROP TABLE IF EXISTS `student_details`;
+CREATE TABLE `student_details` (
+  `student_id` int(10) unsigned NOT NULL auto_increment,
+  `student_name` varchar(45) NOT NULL,
+  `roll_no` varchar(45) NOT NULL,
+  `dob` datetime NOT NULL,
+  `doj` datetime NOT NULL,
+  `father_name` varchar(45) NOT NULL,
+  `mother_name` varchar(45) default NULL,
+  `guardian_name` varchar(45) default NULL,
+  `address_1` varchar(45) NOT NULL,
+  `address_2` varchar(45) default NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `zipCode` varchar(45) NOT NULL,
+  `phone` varchar(45) default NULL,
+  `mobile` varchar(45) default NULL,
+  `class_id` varchar(45) NOT NULL,
+  `course_ids` varchar(45) default NULL,
+  `create_date` datetime NOT NULL,
+  `gender` varchar(8) default NULL,
+  `isActive` int(10) unsigned NOT NULL,
+  `photo_link` varchar(45) default NULL,
+  PRIMARY KEY  (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`student_details`
+--
+
+/*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
+INSERT INTO `student_details` (`student_id`,`student_name`,`roll_no`,`dob`,`doj`,`father_name`,`mother_name`,`guardian_name`,`address_1`,`address_2`,`city`,`state`,`country`,`zipCode`,`phone`,`mobile`,`class_id`,`course_ids`,`create_date`,`gender`,`isActive`,`photo_link`) VALUES 
+ (11,'Satish Raj J','R00001','1998-01-01 00:00:00','2009-01-01 00:00:00','P. Janakiraman','J. Padmaja','P.Janakiraman','No 103, Madhavaram High Road','','Chennai','Tamil Nadu','India','600011','04445042225','9789089437','6','','2009-05-05 00:00:28','M',1,''),
+ (12,'Kumaran','R00002','1996-12-09 00:00:00','2009-01-01 00:00:00','Baskaran','s','s','Test','Trest','Chennai','Tamil Nadu','India','600011','22','9940468824','7','','2009-05-07 06:38:55','M',1,'');
+/*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`subject_details`
+--
+
+DROP TABLE IF EXISTS `subject_details`;
+CREATE TABLE `subject_details` (
+  `subject_id` int(10) unsigned NOT NULL auto_increment,
+  `subject_name` varchar(45) NOT NULL,
+  `max_marks` int(10) unsigned NOT NULL,
+  `create_date` varchar(45) NOT NULL,
+  `subject_order` int(10) unsigned default NULL,
+  PRIMARY KEY  (`subject_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`subject_details`
+--
+
+/*!40000 ALTER TABLE `subject_details` DISABLE KEYS */;
+INSERT INTO `subject_details` (`subject_id`,`subject_name`,`max_marks`,`create_date`,`subject_order`) VALUES 
+ (1,'English',100,'2009-05-02 20:57:14',1),
+ (2,'Tamil',100,'2009-05-02 20:57:24',2),
+ (3,'Maths I',100,'2009-05-02 20:57:41',3),
+ (4,'Maths II',100,'2009-05-05 00:33:20',4),
+ (5,'Physics',100,'2009-05-05 00:33:31',5),
+ (6,'Chemistry',100,'2009-05-05 00:33:42',6),
+ (7,'History',100,'2009-05-05 00:33:53',7),
+ (8,'Geography',100,'2009-05-05 00:34:00',8),
+ (9,'french',100,'2009-06-07 20:30:54',NULL);
+/*!40000 ALTER TABLE `subject_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubepro`.`term_details`
+--
+
+DROP TABLE IF EXISTS `term_details`;
+CREATE TABLE `term_details` (
+  `term_id` int(10) unsigned NOT NULL auto_increment,
+  `term_name` varchar(45) NOT NULL,
+  `create_date` varchar(45) NOT NULL,
+  PRIMARY KEY  (`term_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubepro`.`term_details`
+--
+
+/*!40000 ALTER TABLE `term_details` DISABLE KEYS */;
+INSERT INTO `term_details` (`term_id`,`term_name`,`create_date`) VALUES 
+ (1,'Mid Term 1','01/01/1900'),
+ (2,'Mid Term 2','01/01/1900'),
+ (3,'Mid Term 3','01/01/1900'),
+ (4,'Quartely Exam','01/01/1900'),
+ (5,'Half Yearly Exam','01/01/1900'),
+ (6,'Annual Exam','01/01/1900');
+/*!40000 ALTER TABLE `term_details` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

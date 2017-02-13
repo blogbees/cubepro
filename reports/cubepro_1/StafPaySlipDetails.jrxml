@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="StudentDetailsReport" pageWidth="795" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="755" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="50"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Serif" fontSize="50" isBold="false" pdfFontName="Helvetica"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Serif" fontSize="18" isBold="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Serif" fontSize="14" isBold="true" pdfFontName="Helvetica"/>
+	<style name="Detail" mode="Transparent" fontName="Serif" pdfFontName="Helvetica"/>
+	<style name="Row" mode="Transparent" fontName="Serif" pdfFontName="Helvetica">
+
+	</style>
+	<parameter name="empno" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     concat('STAFF-','00',staff_details.`staff_id`) AS empno,
+     school_details.`school_id` AS school_id,
+     school_details.`school_name` AS school_name,
+     school_details.`address1` AS address1,
+     school_details.`address2` AS address2,
+     school_details.`phoneNo1` AS phoneNo1,
+     school_details.`website` AS website,
+     school_details.`phoneNo2` AS phoneNo2,
+     school_details.`email` AS email,
+     school_details.`faxNo` AS faxNo,
+     school_details.`logo` AS logo,
+     staff_details.`first_name` AS fname,
+     staff_details.`dob` AS dob,
+     staff_details.`doj` AS doj,
+     staff_details.`father_name` AS faname,
+     staff_details.`mother_name` AS mname,
+     staff_details.`guardian_name` AS gname,
+     staff_details.`phone` AS phone,
+     staff_details.`mobile` AS mobile,
+     staff_details.`salary_amount` AS salamt,
+     staff_details.`qualification` AS qualification,
+     staff_details.`designation` AS designation,
+     staff_details.`second_name` AS sname,
+     staff_details.`dept` AS dept,
+     staff_details.`email` AS email,
+     staff_details.`bank_name` AS bankname,
+     staff_details.`bank_acc` AS bankacc,
+     staff_details.`type` AS type,
+     staff_details.`staff_id` AS id,
+     staff_details.`photo` AS photo,
+     staff_details.`house_no` AS house_no,
+     staff_details.`house_name` AS house_name,
+     staff_details.`street` AS street,
+     staff_details.`pin` AS pin,
+     staff_details.`dist` AS dist,
+     staff_details.`city` AS city,
+     staff_details.`state` AS state,
+     staff_details.`country` AS country,
+     staff_details.`basic_pay` AS basicpay,
+     staff_details.`hra` AS hra,
+     staff_details.`da` AS da,
+     staff_details.`allow1` AS allow1,
+     staff_details.`allow2` AS allow2,
+     staff_details.`others` AS others,
+     staff_details.`pf_amt` AS pfamt,
+     staff_details.`pf_acc` AS pfacc,
+     staff_details.`loan_amt` AS loanamt,
+     staff_details.`esi_amt` AS esiamt,
+     staff_details.`esi_acc` AS esiacc,
+     staff_details.`esi_others` AS esiots,
+     staff_details.`tds_amt` AS tdsamt,
+     staff_details.`tds_acc` AS tdsacc,
+     staff_details.`d_p` AS d_p,
+     staff_details.`p_p` AS p_p,
+     staff_details.`m_a` AS m_a,
+     staff_details.`o_a` AS o_a,
+     staff_details.`sa` AS sa,
+     staff_details.`fbf` AS fbf,
+     (basic_pay+hra+da+allow1+allow2+others+d_p+p_p+m_a+o_a+sa)earnings,
+     (pf_amt+esi_amt+tds_amt+loan_amt+pf_cont+fbf+hf+pf_rec+fa+spf_1)gdeduction,
+     (ntc+t_a+cma+diocesan+lic+rd+pli+guild+staff_ex+p_tax+co_optex+misc+stamp)mdeduction,
+ (basic_pay+hra+da+allow1+allow2+others+d_p+p_p+m_a+o_a+sa)-(pf_amt+esi_amt+tds_amt+loan_amt+pf_cont+fbf+hf+pf_rec+fa+spf_1)-(ntc+t_a+cma+diocesan+lic+rd+pli+guild+staff_ex+p_tax+co_optex+misc+stamp)gross,
+     staff_details.`hf` AS hf,
+     staff_details.`pf_cont` AS pf_cont,
+     staff_details.`pf_rec` AS pf_rec,
+     staff_details.`fa` AS fa,
+     staff_details.`spf_1` AS spf_1,
+     staff_details.`ntc` AS ntc,
+     staff_details.`t_a` AS t_a,
+     staff_details.`cma` AS cma,
+     staff_details.`diocesan` AS diocesan,
+     staff_details.`lic` AS lic,
+     staff_details.`rd` AS rd,
+     staff_details.`pli` AS pli,
+     staff_details.`guild` AS guild,
+     staff_details.`staff_ex` AS staff_ex,
+     staff_details.`p_tax` AS p_tax,
+     staff_details.`co_optex` AS co_optex,
+     staff_details.`misc` AS misc,
+     staff_details.`stamp` AS stamp
+FROM
+     `staff_details` staff_details,
+     `school_details` school_details
+WHERE
+     concat('STAFF-','00',staff_details.`staff_id`) = $P{empno}
+GROUP BY
+     staff_details.`staff_id`]]>
+	</queryString>
+	<field name="empno" class="java.lang.String"/>
+	<field name="school_id" class="java.lang.Long"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="phoneNo1" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phoneNo2" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="faxNo" class="java.lang.String"/>
+	<field name="logo" class="java.lang.String"/>
+	<field name="fname" class="java.lang.String"/>
+	<field name="dob" class="java.lang.String"/>
+	<field name="doj" class="java.lang.String"/>
+	<field name="faname" class="java.lang.String"/>
+	<field name="mname" class="java.lang.String"/>
+	<field name="gname" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="salamt" class="java.lang.Double"/>
+	<field name="qualification" class="java.lang.String"/>
+	<field name="designation" class="java.lang.String"/>
+	<field name="sname" class="java.lang.String"/>
+	<field name="dept" class="java.lang.String"/>
+	<field name="bankname" class="java.lang.String"/>
+	<field name="bankacc" class="java.lang.String"/>
+	<field name="type" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="photo" class="java.lang.String"/>
+	<field name="house_no" class="java.lang.String"/>
+	<field name="house_name" class="java.lang.String"/>
+	<field name="street" class="java.lang.String"/>
+	<field name="pin" class="java.lang.String"/>
+	<field name="dist" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="state" class="java.lang.String"/>
+	<field name="country" class="java.lang.String"/>
+	<field name="basicpay" class="java.lang.String"/>
+	<field name="hra" class="java.lang.String"/>
+	<field name="da" class="java.lang.String"/>
+	<field name="allow1" class="java.lang.String"/>
+	<field name="allow2" class="java.lang.String"/>
+	<field name="others" class="java.lang.String"/>
+	<field name="pfamt" class="java.lang.String"/>
+	<field name="pfacc" class="java.lang.String"/>
+	<field name="loanamt" class="java.lang.String"/>
+	<field name="esiamt" class="java.lang.String"/>
+	<field name="esiacc" class="java.lang.String"/>
+	<field name="esiots" class="java.lang.String"/>
+	<field name="tdsamt" class="java.lang.String"/>
+	<field name="tdsacc" class="java.lang.String"/>
+	<field name="d_p" class="java.lang.String"/>
+	<field name="p_p" class="java.lang.String"/>
+	<field name="m_a" class="java.lang.String"/>
+	<field name="o_a" class="java.lang.String"/>
+	<field name="sa" class="java.lang.String"/>
+	<field name="fbf" class="java.lang.String"/>
+	<field name="earnings" class="java.lang.Double"/>
+	<field name="gdeduction" class="java.lang.Double"/>
+	<field name="mdeduction" class="java.lang.Double"/>
+	<field name="gross" class="java.lang.Double"/>
+	<field name="hf" class="java.lang.String"/>
+	<field name="pf_cont" class="java.lang.String"/>
+	<field name="pf_rec" class="java.lang.String"/>
+	<field name="fa" class="java.lang.String"/>
+	<field name="spf_1" class="java.lang.String"/>
+	<field name="ntc" class="java.lang.String"/>
+	<field name="t_a" class="java.lang.String"/>
+	<field name="cma" class="java.lang.String"/>
+	<field name="diocesan" class="java.lang.String"/>
+	<field name="lic" class="java.lang.String"/>
+	<field name="rd" class="java.lang.String"/>
+	<field name="pli" class="java.lang.String"/>
+	<field name="guild" class="java.lang.String"/>
+	<field name="staff_ex" class="java.lang.String"/>
+	<field name="p_tax" class="java.lang.String"/>
+	<field name="co_optex" class="java.lang.String"/>
+	<field name="misc" class="java.lang.String"/>
+	<field name="stamp" class="java.lang.String"/>
+	<group name="Group1">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/15)]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[(int)($V{REPORT_COUNT}/5)]]></groupExpression>
+		<groupHeader>
+			<band/>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="122" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="451" height="86" backcolor="#000000"/>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="27" y="0" width="401" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{school_name}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="228" y="62" width="200" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{website}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="27" y="62" width="200" height="20" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{phoneNo1}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="27" y="21" width="401" height="40" forecolor="#FFFFFF" backcolor="#FFFFFF"/>
+					<textElement textAlignment="Center">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="89" width="451" height="32" forecolor="#000000" backcolor="#669900"/>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="306" y="11" width="144" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="300" height="30"/>
+					<textElement>
+						<font size="24" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Staff Payslip Report]]></text>
+				</staticText>
+			</frame>
+			<image onErrorType="Blank">
+				<reportElement x="459" y="0" width="77" height="102"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{logo}]]></imageExpression>
+			</image>
+			<rectangle>
+				<reportElement x="578" y="32" width="77" height="24" backcolor="#666666"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="578" y="31" width="77" height="24" forecolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Serif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CubePro]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="755" height="25" backcolor="#000000"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="120" height="24" forecolor="#FFFFFF" backcolor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[Staff Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="360" y="1" width="100" height="24" forecolor="#FFFFFF" backcolor="#000000"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<text><![CDATA[EMP NO]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="120" y="0" width="130" height="24" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{fname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="250" y="0" width="30" height="24" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{sname}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="0" width="100" height="24" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{empno}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="500" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Department]]></text>
+			</staticText>
+			<image onErrorType="Blank">
+				<reportElement x="639" y="5" width="100" height="100"/>
+				<imageExpression class="java.lang.String"><![CDATA[$F{photo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="5" width="140" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="124" y="5" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{dept}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="55" width="140" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Salary Amount]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="444" y="5" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{designation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="55" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{salamt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="30" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{bankname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="30" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{bankacc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="185" y="55" width="89" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="130" width="755" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Salary Details Of The Staff]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Bank Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="30" width="140" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Bank Account NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="55" width="180" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Type Of Receiving Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="80" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[P.F. Account NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="300" y="80" width="140" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[E.S.I Account NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="105" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[T.D.S. Account NO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="124" y="105" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tdsacc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="80" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{esiacc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="80" width="150" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pfacc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="628" y="441" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{mdeduction}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="124" y="441" width="120" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{earnings}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="377" y="441" width="120" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{gdeduction}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="441" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Total Earnings]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="441" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Govt. Deduction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="441" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Mang. Deduction]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="255" y="471" width="219" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{gross}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="50" y="471" width="200" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Staff SalaryGross Pay]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="150" width="251" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Earnings]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="150" width="251" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Govt. Deduction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="150" width="251" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Management Deduction]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="371" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[OTHERS IF ANY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="251" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[ALLOWENCE 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="351" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[S.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="291" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[P.P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="231" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[ALLOWENCE 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="171" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[BASIC PAY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="211" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[DA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="311" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[M.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="271" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[D.P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="331" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[O.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="191" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[HRA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="291" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{p_p}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="191" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hra}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="251" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{allow2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="231" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{allow1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="371" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{others}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="211" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{da}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="171" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{basicpay}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="331" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{o_a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="271" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{d_p}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="351" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{sa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="124" y="311" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{m_a}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="291" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[PF. REC.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="171" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[PF AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="271" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[HF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="211" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[TDS AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="251" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[FBF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="231" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[PF CONT.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="351" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[LOAN IF ANY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="191" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[ESI AMOUNT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="331" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[SPF - l]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="311" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[FA]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="311" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="191" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{esiamt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="291" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pf_rec}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="271" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{hf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="351" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{loanamt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="251" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fbf}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="171" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pfamt}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="211" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tdsacc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="331" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{spf_1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="376" y="231" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pf_cont}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="391" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[MISC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="251" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[LIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="191" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[T.A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="291" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[PLI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="411" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[STAMP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="271" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[RD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="231" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[DIOCESAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="171" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[NTC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="351" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[P.TAX]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="331" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[STAFF Ex.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="211" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[CMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="311" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[GUILD]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="504" y="371" width="120" height="20" forecolor="#FFFFFF" backcolor="#000000"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial Narrow" size="16"/>
+				</textElement>
+				<text><![CDATA[Co-Optex]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="231" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{diocesan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="251" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lic}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="351" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{p_tax}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="311" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{guild}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="371" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{co_optex}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="411" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stamp}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="391" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{misc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="271" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{rd}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="331" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{staff_ex}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="211" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cma}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="191" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{t_a}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="171" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{ntc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="630" y="291" width="120" height="20" backcolor="#CCCCCC"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{pli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="754" height="24" forecolor="#D0B48E" backcolor="#000000"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="699" y="1" width="40" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="619" y="1" width="80" height="20" forecolor="#FFFFFF"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.cubepro.transaction.AssetAndLiabilityDetails"
+		table="asset_and_liability">
+		<id name="assAndLiaId" type="java.lang.Integer">
+			<column name="ass_and_lia_id" />
+			<generator class="assigned" />
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="type" length="100"  />
+		</property>
+		<property name="year" type="java.lang.String">
+			<column name="year" length="100"  />
+		</property>
+		<property name="date" type="java.lang.String">
+			<column name="al_date" length="12"  />
+		</property>
+		<property name="amount" type="java.lang.String">
+			<column name="amount" length="100"  />
+		</property>
+		<property name="desc" type="java.lang.String">
+			<column name="al_desc" length="100"  />
+		</property>
+		<property name="desc1" type="java.lang.String">
+			<column name="desc1" length="100"  />
+		</property>
+		<property name="subType" type="java.lang.String">
+			<column name="sub_type" length="100"  />
+		</property>
+		<property name="regBookNo" type="java.lang.String">
+			<column name="reg_book_no" length="100"  />
+		</property>		
+	</class>
+</hibernate-mapping>

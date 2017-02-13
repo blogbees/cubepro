@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="cubepro-support" namespace="/"
+		extends="struts-default">
+
+		<action name="Logout" class="com.cubepro.logout.Logout">
+			<result type="redirectAction">Login</result>
+		</action>
+
+		<action name="Login"
+			class="com.cubepro.login.entity.LoginDetails">
+			<result name="input">/jsp/login.jsp</result>
+			<result name="success">/jsp/login.jsp</result>
+		</action>
+
+		<action name="StudentDetails"
+			class="com.cubepro.student.StudentDetails" >
+			<result name="input">/jsp/studentDetail.jsp</result>
+			<result name="success">/jsp/studentDetail.jsp</result>
+		</action>
+
+
+		<action name="SMSAbsentees"
+			class="com.cubepro.sms.SearchSMSDetails">
+			<result name="input">/jsp/absentSMSDetails.jsp</result>
+			<result name="success">/jsp/absentSMSDetails.jsp</result>
+		</action>
+
+		<action name="SMSMarkLists"
+			class="com.cubepro.sms.SearchSMSDetails">
+			<result name="input">/jsp/smsMarkLists.jsp</result>
+			<result name="success">/jsp/smsMarkLists.jsp</result>
+		</action>
+
+		<action name="SMSGeneral"
+			class="com.cubepro.sms.SearchSMSDetails">
+			<result name="input">/jsp/generalSMS.jsp</result>
+			<result name="success">/jsp/generalSMS.jsp</result>
+		</action>
+
+		<action name="Reports"
+			class="com.cubepro.reports.ListReportAction">
+			<result name="input">/jsp/reportsList.jsp</result>
+			<result name="success">/jsp/reportsList.jsp</result>
+		</action>
+	</package>
+	<package name="default" namespace="/"
+		extends="jasperreports-default">
+		<action name="studentAttendanceJT"
+			class="com.cubepro.jasper.action.StudentAttendanceJA">
+			<result name="success" type="jasper">
+				/reports/student_attn_det_rpt.jasper
+			</result>
+			<result name="exportPDF">
+				/reports/student_attn_det_rpt.pdf
+			</result>
+			<result name="exportXLS">
+				/reports/student_attn_det_rpt.xls
+			</result>
+			<result name="exportRTF">
+				/reports/student_attn_det_rpt.rtf
+			</result>
+		</action>
+	</package>
+</struts>

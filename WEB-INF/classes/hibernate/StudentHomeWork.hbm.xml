@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.cubepro.student.StudentHomeWork" table="student_homework">
+		<id name="studentHomeWorkId" type="java.lang.Integer">
+			<column name="stuhw_id" />
+			<generator class="assigned" />
+		</id>
+        <many-to-one name="classDetail" class="com.cubepro.classes.ClassDetails" fetch="select" lazy="false" >
+            <column name="class_id" />
+        </many-to-one>
+
+		<!-- <many-to-one name="studentDetail" class="com.cubepro.student.StudentDetails" fetch="select" lazy="false">
+            <column name="student_id" />
+        </many-to-one>
+        
+        <many-to-one name="homework" class="com.cubepro.homework.HomeWork" fetch="select" lazy="false" >
+            <column name="hw_id" />
+        </many-to-one>
+		 -->
+		<property name="dateOfAssignment" type="java.lang.String">
+			<column name="date_of_assignment" length="45"></column>
+		</property>
+		<property name="dateToComplete" type="java.lang.String">
+			<column name="date_to_complete" length="45"></column>
+		</property>
+		<property name="generalComments" type="java.lang.String">
+			<column name="general_comments" length="100"></column>
+		</property>
+		<property name="admissionNo" type="java.lang.String">
+			<column name="admission_no" length="45"></column>
+		</property>
+	</class>
+</hibernate-mapping>

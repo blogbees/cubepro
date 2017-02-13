@@ -1,0 +1,196 @@
+/**
+ * 
+ */
+package com.cubepro.components;
+
+/**
+ * @author ratnavel.sundaramurt
+ *
+ */
+public class ScreenPermissionConstants {
+	
+	/**
+	 * Screen Permission
+	 */
+	public final static String PERM_BENEFICIARY_REGISTRATION = "PERM_BENEFICIARY";
+	public final static String PERM_BENEFICIARY_DETAILS = "PERM_BENEFICIARY_DETAILS";
+	public final static String PERM_BENEFICIARY_SUBMIT = "PERM_BENEFICIARY_SUBMIT";
+	
+	public final static String PERM_DEMAND_FOR_WORK = "PERM_DEMAND_FOR_WORK"; 
+	
+	public final static String PERM_PROJECT = "PERM_PROJECT"; 
+	
+	public final static String PERM_TECHNICAL_ESTIMATION = "PERM_TECHNICAL_ESTIMATION";
+	public final static String PERM_LIST_OF_PROJECTS = "PERM_LIST_OF_PROJECTS";
+	public final static String PERM_PROJECT_UPDATE = "PERM_PROJECT_UPDATE";
+	public final static String PERM_PROJECT_REVERT = "PERM_PROJECT_REVERT";
+
+	public final static String PERM_PROJECT_CREATION = "PERM_PROJECT_CREATION"; 
+	public final static String PERM_PROJECT_ESTIMATE = "PERM_PROJECT_ESTIMATE";
+	public final static String PERM_ATTENDANCE_FOR_SKILLED_AND_SEMISKILLED = "PERM_ATTENDANCE_FOR_SKILLED_AND_SEMISKILLED";
+	public final static String PERM_MEASUREMENT = "PERM_MEASUREMENT"; 
+	public final static String PERM_MEASUREMENT_REVIEW = "PERM_MEASUREMENT_REVIEW";
+	public final static String PERM_MEASUREMENT_SUMMARY = "PERM_MEASUREMENT_SUMMARY";
+	public final static String PERM_MEASUREMENT_AUTO_APPROVAL_DAYS_CONFIG = "PERM_MEASUREMENT_AUTO_APPROVAL_DAYS_CONFIG";
+
+	public final static String PERM_GENERATE_PAYMENT = "PERM_GENERATE_PAYMENT";
+	/*public final static String PERM_PROJECT_MANAGEMENT = "PERM_PROJECT_MANAGEMENT";*/
+	public final static String PERM_INITIAL_APPROVAL = "PERM_INITIAL_APPROVAL"; 
+	public final static String PERM_TECHNICAL_APPROVAL = "PERM_TECHNICAL_APPROVAL";
+	public final static String PERM_ADMINISTRATIVE_APPROVAL = "PERM_ADMINISTRATIVE_APPROVAL"; 
+	
+	// DATA TRANSFER PERMISSIONS
+	public final static String PERM_IMPORT_DEMAND_FOR_WORK = "PERM_IMPORT_DEMAND_FOR_WORK";
+	public final static String PERM_IMPORT_ATTENDANCE = "PERM_IMPORT_ATTENDANCE";
+	public final static String PERM_EXPORT_PROJECT = "PERM_EXPORT_PROJECT";
+	
+	//Issue Work Order
+	public final static String PERM_ISSUE_WORK_ORDER = "PERM_ISSUE_WORK_ORDER";
+	// Allocate Demand Permissions
+	public final static String PERM_ALLOCATE_DEMAND_BY_PROJECT = "PERM_ALLOCATE_DEMAND_BY_PROJECT";
+	public final static String PERM_ALLOCATE_DEMAND_BY_BENEFICIARY = "PERM_ALLOCATE_DEMAND_BY_BENEFICIARY";
+	
+	public final static String PERM_INSPECTION_AUDIT = "PERM_INSPECTION_AUDIT";
+	public final static String PERM_PHYSICAL_INSPECTION_AUDIT = "PERM_PHYSICAL_INSPECTION_AUDIT";
+	public final static String PERM_SOCIAL_AUDIT = "PERM_SOCIAL_AUDIT"; 
+	public final static String PERM_PROJECT_DETAILS = "PERM_PROJECT_DETAILS";
+	public final static String PERM_PROJECT_CLOSURE = "PERM_PROJECT_CLOSURE"; 
+	
+	public final static String PERM_ISSUE_WORKORDER = "PERM_IssueWorkOrder";
+	public final static String PERM_LABOUR_BUDGET = "PERM_LABOUR_BUDGET";
+	public final static String PERM_FINANCIAL = "PERM_Financial"; 
+	public final static String PERM_LABOUR_ESTIMATE = "PERM_LabourEstimate"; 
+	public final static String PERM_DEVELOPMENT_PLAN = "PERM_DevelopmentPlan"; 
+	public final static String PERM_DEVELOPMENT_PLAN_PROJECTS = "PERM_DevelopmentPlanProjects";
+	
+	public final static String PERM_FUNDS_CLAIM = "PERM_FundsClaim"; 
+
+	public final static String PERM_FUNDS_RELEASE = "PERM_FUND_RELEASE";
+	public final static String PERM_FUND_CLAIM = "PERM_FUND_CLAIM"; 
+	public final static String PERM_UTILIZATION_CERTIFICATE = "PERM_UTILIZATION_CERTIFICATE";
+	
+	public final static String PERM_FINANCIAL_AUDIT = "PERM_FINANCIAL_AUDIT"; 
+//	public final static String PERM_ACCOUNTING_SYSTEM = "PERM_AccountingSystem"; 
+	
+	public final static String PERM_BENEFICIARY_REPORTS = "PERM_BENEFICIARY_REPORTS";
+	public final static String PERM_DYNAMIC_REPORTS = "PERM_DYNAMIC_REPORTS";
+	
+//	public final static String PERM_HELP_DESK = "PERM_HELP_DESK";
+	public final static String PERM_CREATE_TICKET = "PERM_CREATE_TICKET"; 
+	public final static String PERM_TRACK_TICKET = "PERM_TRACK_TICKET";
+	
+	public final static String PERM_GRIEVANCE_REDRESSAL = "PERM_GRIEVANCE_REDRESSAL";
+	public final static String PERM_REGISTER_GRIEVANCE = "PERM_GRIEVANCE"; 
+	public final static String PERM_TRACK_GRIEVANCE = "PERM_GRIEVANCE_TRACK";
+	public final static String PERM_GRIEVANCE_MONTHLY_REPORT = "PERM_GRIEVANCE_MONTHLY_REPORT"; 
+
+	public final static String PERM_ADMIN = "PERM_ADMIN"; 
+	public final static String PERM_WORKFLOW_CONFIG = "PERM_WORKFLOW_CONFIG";
+	public final static String PERM_USER = "PERM_USER";
+	public final static String PERM_ROLE = "PERM_ROLE";
+	public final static String PERM_ASSIGN_PERMISSION = "PERM_ASSIGN_PERMISSION";
+	public final static String PERM_EMAIL_TEMPLATE = "PERM_EMAIL_TEMPLATE";
+	public final static String PERM_GRM_TEMPLATE = "PERM_GRM_TEMPLATE";
+	
+	/*public final static String PERM_CREATE_UPDATE_USER = "PERM_CREATE_UPDATE_USER";
+	public final static String PERM_CREATE_UPDATE_ROLE = "PERM_CREATE_UPDATE_ROLE";
+	public final static String PERM_ASSIGN_PERMISSION = "PERM_ASSIGN_PERMISSION"; 
+	public final static String PERM_GRIEVANCE_CONFIG = "PERM_GRIEVANCE_CONFIG";
+	public final static String PERM_BANK_INFORMATION = "PERM_BANK_INFORMATION"; 
+	public final static String PERM_PROJECT_RELATED_INFORMATION = "PERM_ProjectRelatedInformation";
+	public final static String PERM_RATES_FOR_STRUCTUREDWORK = "PERM_RatesForStructuredWork";
+	public final static String PERM_PROJECT_RATES_AND_COSTS = "PERM_ProjectRatesAndCosts";*/
+	
+	public final static String PERM_SOIL_TYPE = "PERM_SOIL_TYPE";
+	public final static String PERM_IMPLEMENTING_AGENCY = "PERM_IMPLEMENTING_AGENCY";
+	public final static String PERM_DISTRICT = "PERM_DISTRICT";
+	public final static String PERM_BLOCK = "PERM_BLOCK";
+	public final static String PERM_PANCHAYAT = "PERM_PANCHAYAT";
+	public final static String PERM_VILLAGE = "PERM_VILLAGE";
+	public final static String PERM_BANK_TYPE = "PERM_BANK_TYPE";
+	public final static String PERM_BANK = "PERM_BANK";
+	public final static String PERM_BANK_BRANCH = "PERM_BANK_BRANCH";
+	public final static String PERM_SCHEME_CATEGORY_CONFIG = "PERM_SCHEME_CATEGORY_CONFIG";
+	
+	public final static String PERM_MARITAL_STATUS = "PERM_MARITAL_STATUS";
+	public final static String PERM_RELIGION = "PERM_RELIGION";
+	public final static String PERM_CASTE = "PERM_CASTE";
+	public final static String PERM_RECONSIDER_REASON = "PERM_RECONSIDER_REASON";
+	public final static String PERM_PROJECT_AUTO_APPROVAL_DAYS_CONFIG = "PERM_PROJECT_AUTO_APPROVAL_DAYS_CONFIG";
+	public final static String PERM_EDUCATION = "PERM_EDUCATION";
+	public final static String PERM_PROFESSION = "PERM_PROFESSION";
+	public final static String PERM_POST_OFFICE = "PERM_POST_OFFICE";
+	public final static String PERM_POLICE_STATION = "PERM_POLICE_STATION";
+	
+	public final static String PERM_MALE_FEMALE_RATIO_CONFIG = "PERM_MALE_FEMALE_RATIO_CONFIG";
+	public final static String PERM_WAGE_MATERIAL_RATIO_CONFIG = "PERM_WAGE_MATERIAL_RATIO_CONFIG";
+	public final static String PERM_LEAD_TABLE_CONFIG = "PERM_LEAD_TABLE_CONFIG";
+	public final static String PERM_LIFT_TABLE_CONFIG = "PERM_LIFT_TABLE_CONFIG";
+	public final static String PERM_PLANT_TYPE = "PERM_PLANT_TYPE";
+	public final static String PERM_TREE_PLANTATION_STANDARD_CONFIG = "PERM_TREE_PLANTATION_STANDARD_CONFIG";
+	public final static String PERM_WEED_PROTECTION_AND_CLEARING_CONFIG = "PERM_WEED_PROTECTION_AND_CLEARING_CONFIG";
+	public final static String PERM_LARGE_AREA_PLANTATION_CONFIG = "PERM_LARGE_AREA_PLANTATION_CONFIG";
+	public final static String PERM_PLANT_PROTECTION_CONFIG = "PERM_PLANT_PROTECTION_CONFIG";
+	
+	public final static String PERM_LOCAL_SAND_FILLING_CONFIG = "PERM_LOCAL_SAND_FILLING_CONFIG";
+	public final static String PERM_BRICK_SOLING_CONFIG = "PERM_BRICK_SOLING_CONFIG";
+	public final static String PERM_BRICK_WORK_IN_CEMENT_MORTAR_CONFIG = "PERM_BRICK_WORK_IN_CEMENT_MORTAR_CONFIG";
+	public final static String PERM_REINFORCED_CEMENT_CONCRETE_SLAB_CONFIG = "PERM_REINFORCED_CEMENT_CONCRETE_SLAB_CONFIG";
+	public final static String PERM_LABOUR_FOR_HUME_PIPE_CULVERT_CONFIG = "PERM_LABOUR_FOR_HUME_PIPE_CULVERT_CONFIG";
+	public final static String PERM_MATERIAL = "PERM_MATERIAL";
+	public final static String PERM_CARRIAGE_COST_CONFIG = "PERM_CARRIAGE_COST_CONFIG";
+	public final static String PERM_HUME_PIPE_CULVERT_EW_ESTIMATION_CONFIG = "PERM_HUME_PIPE_CULVERT_EW_ESTIMATION_CONFIG";
+	public final static String PERM_PLAIN_OR_REINFORCED_CEMENT_CONCRETE_CONFIG = "PERM_PLAIN_OR_REINFORCED_CEMENT_CONCRETE_CONFIG";
+	public final static String PERM_CEMENT_PLASTERING_IN_CEMENT_MORTAR_CONFIG = "PERM_CEMENT_PLASTERING_IN_CEMENT_MORTAR_CONFIG";
+	public final static String PERM_CEMENT_PLASTERING_AND_PUNNING_CONFIG = "PERM_CEMENT_PLASTERING_AND_PUNNING_CONFIG";
+	public final static String PERM_PROVISION_FOR_SHUTTERING_CATERING_CONFIG = "PERM_PROVISION_FOR_SHUTTERING_CATERING_CONFIG";
+	public final static String PERM_SUPPLY_PROVIDE_HUME_PIPE_CULVERT_CONFIG = "PERM_SUPPLY_PROVIDE_HUME_PIPE_CULVERT_CONFIG";
+	public final static String PERM_CONTRACTOR_BENEFIT = "PERM_CONTRACTOR_BENEFIT";
+	
+	public final static String PERM_LEAN_PERIOD_CONFIG = "PERM_LEAN_PERIOD_CONFIG";
+	public final static String PERM_UNSKILLED_LABOUR_WAGE_CONFIG = "PERM_UNSKILLED_LABOUR_WAGE_CONFIG";
+	public final static String PERM_SEMI_SKILLED_LABOUR_WAGE_CONFIG = "PERM_SEMI_SKILLED_LABOUR_WAGE_CONFIG";
+	public final static String PERM_SKILLED_LABOUR_WAGE_CONFIG = "PERM_SKILLED_LABOUR_WAGE_CONFIG";
+	public final static String PERM_MATE_WAGE_CONFIG = "PERM_MATE_WAGE_CONFIG";
+	public final static String PERM_WATER_PROVIDER_COST_CONFIG = "PERM_WATER_PROVIDER_COST_CONFIG";
+	public final static String PERM_CONTINGENCY_CONFIG = "PERM_CONTINGENCY_CONFIG";
+	public final static String PERM_MISCELLANEOUS_CONFIG = "PERM_MISCELLANEOUS_CONFIG";
+	public final static String PERM_COMPACTION_WORK_FOR_ROAD_CONFIG = "PERM_COMPACTION_WORK_FOR_ROAD_CONFIG";	
+	public final static String PERM_DEVIATION_PERCENTAGE_CONFIG = "PERM_DEVIATION_PERCENTAGE_CONFIG";
+	public final static String PERM_DRESSING_AND_LEVELING_FOR_EARTH_WORK_CONFIG = "PERM_DRESSING_AND_LEVELING_FOR_EARTH_WORK_CONFIG";
+	
+	public final static String PERM_AUDIT_DOMAIN = "PERM_AUDIT_DOMAIN";
+	public final static String PERM_AUDIT_CATEGORY = "PERM_AUDIT_CATEGORY";
+	public final static String PERM_AUDIT_QUESTIONS = "PERM_AUDIT_QUESTIONS";
+	
+	public final static String PERM_HELPDESK_EMAIL_CONFIG = "PERM_HELPDESK_EMAIL_CONFIG";
+	public final static String PERM_HELPDESK_CONTACT_NUMBER_CONFIG = "PERM_HELPDESK_CONTACT_NUMBER_CONFIG";
+	public final static String PERM_HELPDESK_DOMAIN = "PERM_HELPDESK_DOMAIN";
+	public final static String PERM_HELPDESK_CATEGORY = "PERM_HELPDESK_CATEGORY";
+	public final static String PERM_HELPDESK_SUB_CATEGORY = "PERM_HELPDESK_SUB_CATEGORY";
+	public final static String PERM_ASSET = "PERM_ASSET";
+	public final static String PERM_MODULE = "PERM_MODULE";
+	
+	public final static String PERM_LABOUR_BUDGET_AUTO_APPROVAL_DAYS_CONFIG = "PERM_LABOUR_BUDGET_AUTO_APPROVAL_DAYS_CONFIG";
+	
+	public final static String PERM_GRIEVANCE_DOMAIN = "PERM_GRIEVANCE_DOMAIN";
+	public final static String PERM_GRIEVANCE_FREQUENCY = "PERM_GRIEVANCE_FREQUENCY";
+	public final static String PERM_GRIEVANCE_CATEGORY = "PERM_GRIEVANCE_CATEGORY";
+	public final static String PERM_GRIEVANCE_REQUEST_TYPE = "PERM_GRIEVANCE_REQUEST_TYPE";
+	public final static String PERM_GRIEVANCE_QUESTIONS = "PERM_GRIEVANCE_QUESTIONS";
+	public final static String PERM_GRIEVANCE_DISCUSSION_THREAD = "PERM_GRIEVANCE_DISCUSSION_THREAD";
+	public final static String PERM_GRIEVANCE_FAQ_BANK = "PERM_GRIEVANCE_FAQ_BANK";
+	
+	public final static String PERM_DASHBOARD_CONFIG = "PERM_DASHBOARD_CONFIG";
+	
+	public final static String  PERM_HELPDESK_TICKET = "PERM_HELPDESK_TICKET";
+	
+	public final static String PERM_DOCUMENT_MANAGEMENT = "PERM_DOCUMENT_MANAGEMENT";
+	
+	public final static String PERM_ADMIN_DOCUMENT_MANAGEMENT = "PERM_ADMIN_DOCUMENT_MANAGEMENT";
+	
+	public final static String PERM_AUDIT_AGENCY = "PERM_AUDIT_AGENCY";
+	
+	public final static String PERM_REPORTS = "PERM_REPORTS";	
+}
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.cubepro.registration.SchoolDetails" table="school_details" dynamic-insert="true" dynamic-update="true">
+        <id name="schoolId" type="java.lang.Integer">
+            <column name="school_id" />
+            <generator class="assigned" />
+        </id>
+        <property name="schoolName" type="java.lang.String">
+            <column name="school_name" length="45" not-null="true" />
+        </property>
+        <property name="address1" type="java.lang.String">
+            <column name="address1" length="45" not-null="true" />
+        </property>
+        <property name="address2" type="java.lang.String">
+            <column name="address2" length="45" />
+        </property>
+        <property name="city" type="java.lang.String">
+            <column name="city" length="45" not-null="true" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="state" length="45" not-null="true" />
+        </property>
+        <property name="country" type="java.lang.String">
+            <column name="country" length="45" not-null="true" />
+        </property>
+        <property name="zipCode" type="java.lang.String">
+            <column name="zipCode" length="45" not-null="true" />
+        </property>
+        <property name="phoneNo1" type="java.lang.String">
+            <column name="phoneNo1" length="45" />
+        </property>
+        <property name="phoneNo2" type="java.lang.String">
+            <column name="phoneNo2" length="45" />
+        </property>
+        <property name="mobileNo" type="java.lang.String">
+            <column name="mobileNo" length="45" />
+        </property>
+        <property name="faxNo" type="java.lang.String">
+            <column name="faxNo" length="8" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email"  />
+        </property>
+        <property name="website" type="java.lang.String">
+            <column name="website" />
+        </property>
+        <property name="classes" type="java.lang.String">
+            <column name="classes"  />
+        </property>
+        <property name="division" type="java.lang.String">
+            <column name="division"  />
+        </property>
+        <property name="category" type="java.lang.String">
+            <column name="category"  />
+        </property>
+        <property name="subCategory" type="java.lang.String">
+            <column name="sub_category"  />
+        </property>
+        <property name="govtRegNo" type="java.lang.String">
+            <column name="govt_reg_no"  />
+        </property>
+        <property name="validityDate" type="java.lang.String">
+            <column name="validity_date"  />
+        </property>
+        <property name="corresName" type="java.lang.String">
+            <column name="corres_name"  />
+        </property>
+        <property name="principal" type="java.lang.String">
+            <column name="principal"  />
+        </property>
+        <property name="headMasterName" type="java.lang.String">
+            <column name="headmaster_name"  />
+        </property>
+        <property name="mgmtName" type="java.lang.String">
+            <column name="mgmt_name"  />
+        </property>
+        <property name="revDis" type="java.lang.String">
+            <column name="rev_dis"  />
+        </property>
+        <property name="eduDis" type="java.lang.String">
+            <column name="edu_dis"  />
+        </property>
+        <property name="staffMaxLeave" type="java.lang.String">
+            <column name="staff_max_leave"  />
+        </property>
+        <property name="studentMaxLeave" type="java.lang.String">
+            <column name="student_max_leave"  />
+        </property>
+        <property name="logo" type="java.lang.String">
+            <column name="logo"  />
+        </property>
+        <property name="smsName" type="java.lang.String">
+            <column name="sms_name"  />
+        </property>
+    </class>
+</hibernate-mapping>

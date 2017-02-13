@@ -1,0 +1,391 @@
+-- MySQL Administrator dump 1.4
+--
+-- ------------------------------------------------------
+-- Server version	5.0.12-beta-nt
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+--
+-- Create schema cubeprov
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ cubeprov;
+USE cubeprov;
+
+--
+-- Table structure for table `cubeprov`.`class_details`
+--
+
+DROP TABLE IF EXISTS `class_details`;
+CREATE TABLE `class_details` (
+  `class_id` int(10) unsigned NOT NULL auto_increment COMMENT 'Primary Key of Class Details table',
+  `class_name` varchar(10) NOT NULL COMMENT 'Name of the class',
+  `no_of_students` int(10) unsigned NOT NULL COMMENT 'Total no of students in a class',
+  `section_name` varchar(2) NOT NULL COMMENT 'Section Name of the class',
+  `staff_in_charge_id` int(10) unsigned NOT NULL COMMENT 'Staff Id of the staff incharge',
+  PRIMARY KEY  (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='This Contains the Class List';
+
+--
+-- Dumping data for table `cubeprov`.`class_details`
+--
+
+/*!40000 ALTER TABLE `class_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `class_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`course_details`
+--
+
+DROP TABLE IF EXISTS `course_details`;
+CREATE TABLE `course_details` (
+  `course_id` int(10) unsigned NOT NULL auto_increment,
+  `course_name` varchar(45) NOT NULL,
+  `course_fee` double NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned NOT NULL,
+  `status` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`course_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`course_details`
+--
+
+/*!40000 ALTER TABLE `course_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`exam_details`
+--
+
+DROP TABLE IF EXISTS `exam_details`;
+CREATE TABLE `exam_details` (
+  `exam_id` int(10) unsigned NOT NULL auto_increment,
+  `class_id` int(10) unsigned NOT NULL,
+  `exam_type` varchar(45) NOT NULL,
+  `subject_name` varchar(45) NOT NULL,
+  `date_of_exam` datetime NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime NOT NULL,
+  `change_user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`exam_id`),
+  KEY `FK_exam_details_class` (`class_id`),
+  CONSTRAINT `FK_exam_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`exam_details`
+--
+
+/*!40000 ALTER TABLE `exam_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `exam_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`fees_details`
+--
+
+DROP TABLE IF EXISTS `fees_details`;
+CREATE TABLE `fees_details` (
+  `fees_id` int(10) unsigned NOT NULL auto_increment,
+  `class_id` int(10) unsigned NOT NULL,
+  `fees_amount` double NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`fees_id`),
+  KEY `FK_fees_details_class` (`class_id`),
+  CONSTRAINT `FK_fees_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`fees_details`
+--
+
+/*!40000 ALTER TABLE `fees_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `fees_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`invoice_details`
+--
+
+DROP TABLE IF EXISTS `invoice_details`;
+CREATE TABLE `invoice_details` (
+  `invoice_id` int(10) unsigned NOT NULL auto_increment,
+  `fees_id` int(10) unsigned NOT NULL,
+  `invoice_no` varchar(10) NOT NULL,
+  `student_id` int(10) unsigned NOT NULL,
+  `invoice_date` datetime NOT NULL,
+  `total_amt_paid` double NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`invoice_id`),
+  KEY `FK_invoice_details_1` (`student_id`),
+  KEY `FK_invoice_details_2` (`fees_id`),
+  CONSTRAINT `FK_invoice_details_2` FOREIGN KEY (`fees_id`) REFERENCES `fees_details` (`fees_id`),
+  CONSTRAINT `FK_invoice_details_1` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`invoice_details`
+--
+
+/*!40000 ALTER TABLE `invoice_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `invoice_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`mark_details`
+--
+
+DROP TABLE IF EXISTS `mark_details`;
+CREATE TABLE `mark_details` (
+  `mark_id` int(10) unsigned NOT NULL auto_increment,
+  `exam_id` int(10) unsigned NOT NULL,
+  `student_id` int(10) unsigned NOT NULL,
+  `class_id` int(10) unsigned NOT NULL,
+  `subject_id` int(10) unsigned NOT NULL,
+  `mark_obtained` double default NULL,
+  `max_marks` double NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`mark_id`),
+  KEY `FK_mark_details_class` (`class_id`),
+  KEY `FK_mark_details_student` (`student_id`),
+  KEY `FK_mark_details_exam` (`exam_id`),
+  CONSTRAINT `FK_mark_details_exam` FOREIGN KEY (`exam_id`) REFERENCES `exam_details` (`exam_id`),
+  CONSTRAINT `FK_mark_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`),
+  CONSTRAINT `FK_mark_details_student` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`mark_details`
+--
+
+/*!40000 ALTER TABLE `mark_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mark_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`staff_attendance_details`
+--
+
+DROP TABLE IF EXISTS `staff_attendance_details`;
+CREATE TABLE `staff_attendance_details` (
+  `attendance_id` int(10) unsigned NOT NULL auto_increment,
+  `attendance_date` datetime NOT NULL,
+  `staff_id` int(10) unsigned NOT NULL,
+  `attendance_status` varchar(15) NOT NULL,
+  `attendance_reason` varchar(45) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`attendance_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`staff_attendance_details`
+--
+
+/*!40000 ALTER TABLE `staff_attendance_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `staff_attendance_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`staff_details`
+--
+
+DROP TABLE IF EXISTS `staff_details`;
+CREATE TABLE `staff_details` (
+  `staff_id` int(10) unsigned NOT NULL auto_increment,
+  `staff_name` varchar(45) NOT NULL,
+  `staff_no` varchar(45) NOT NULL,
+  `class_id` int(10) unsigned NOT NULL,
+  `dob` datetime NOT NULL,
+  `doj` datetime NOT NULL,
+  `father_name` varchar(45) NOT NULL,
+  `mother_name` varchar(45) default NULL,
+  `guardian_name` varchar(45) default NULL,
+  `address_1` varchar(45) NOT NULL,
+  `address_2` varchar(45) default NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `zipCode` varchar(45) NOT NULL,
+  `phone` varchar(45) default NULL,
+  `mobile` varchar(45) default NULL,
+  `salary_amount` double NOT NULL,
+  `sex` varchar(1) NOT NULL,
+  `qualification` varchar(100) NOT NULL,
+  `designation` varchar(50) NOT NULL,
+  `subject_handled_1` varchar(30) NOT NULL,
+  `subject_handled_2` varchar(30) NOT NULL,
+  `subject_handled_3` varchar(30) NOT NULL,
+  `subject_handled_4` varchar(30) NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned NOT NULL,
+  `status_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`staff_id`),
+  KEY `FK_staff_details_class` (`class_id`),
+  CONSTRAINT `FK_staff_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`staff_details`
+--
+
+/*!40000 ALTER TABLE `staff_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `staff_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`student_attendance_details`
+--
+
+DROP TABLE IF EXISTS `student_attendance_details`;
+CREATE TABLE `student_attendance_details` (
+  `attendance_id` int(10) unsigned NOT NULL auto_increment,
+  `absent_date` datetime NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `attendance_status` varchar(15) NOT NULL default 'ABSENT',
+  `attendance_reason` varchar(45) default NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`attendance_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`student_attendance_details`
+--
+
+/*!40000 ALTER TABLE `student_attendance_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_attendance_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`student_details`
+--
+
+DROP TABLE IF EXISTS `student_details`;
+CREATE TABLE `student_details` (
+  `student_id` int(10) unsigned NOT NULL auto_increment,
+  `student_name` varchar(45) NOT NULL,
+  `roll_no` varchar(45) NOT NULL,
+  `dob` datetime NOT NULL,
+  `doj` datetime NOT NULL,
+  `father_name` varchar(45) NOT NULL,
+  `mother_name` varchar(45) default NULL,
+  `guardian_name` varchar(45) default NULL,
+  `address_1` varchar(45) NOT NULL,
+  `address_2` varchar(45) default NULL,
+  `city` varchar(45) NOT NULL,
+  `state` varchar(45) NOT NULL,
+  `country` varchar(45) NOT NULL,
+  `zipCode` varchar(45) NOT NULL,
+  `phone` varchar(45) default NULL,
+  `mobile` varchar(45) default NULL,
+  `class_id` int(10) unsigned NOT NULL,
+  `course_ids` varchar(45) default NULL,
+  `gender` varchar(8) default NULL,
+  `status` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`student_id`),
+  KEY `FK_student_details_class1` (`class_id`),
+  CONSTRAINT `FK_student_details_class1` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`student_details`
+--
+
+/*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`subject_details`
+--
+
+DROP TABLE IF EXISTS `subject_details`;
+CREATE TABLE `subject_details` (
+  `subject_id` int(10) unsigned NOT NULL auto_increment COMMENT 'Primary Key',
+  `subject_name` varchar(45) NOT NULL COMMENT 'Name of the Subject',
+  `class_id` int(10) unsigned NOT NULL COMMENT 'Foreign key of class_details table',
+  `max_marks` double NOT NULL COMMENT 'Max marks for a subject',
+  PRIMARY KEY  (`subject_id`),
+  KEY `FK_subject_details_class` (`class_id`),
+  CONSTRAINT `FK_subject_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Subject Details';
+
+--
+-- Dumping data for table `cubeprov`.`subject_details`
+--
+
+/*!40000 ALTER TABLE `subject_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subject_details` ENABLE KEYS */;
+
+
+--
+-- Table structure for table `cubeprov`.`time_table_details`
+--
+
+DROP TABLE IF EXISTS `time_table_details`;
+CREATE TABLE `time_table_details` (
+  `time_table_detail_id` int(10) unsigned NOT NULL auto_increment,
+  `class_id` int(10) unsigned NOT NULL,
+  `staff_id` int(10) unsigned NOT NULL,
+  `replacement_staff_id` int(10) unsigned NOT NULL,
+  `day` varchar(20) NOT NULL,
+  `year` int(10) unsigned NOT NULL,
+  `create_date` datetime NOT NULL,
+  `create_user_id` int(10) unsigned NOT NULL,
+  `change_date` datetime default NULL,
+  `change_user_id` int(10) unsigned default NULL,
+  PRIMARY KEY  (`time_table_detail_id`),
+  KEY `FK_time_table_details_class` (`class_id`),
+  KEY `FK_time_table_details_2` (`staff_id`),
+  KEY `FK_time_table_details_3` (`replacement_staff_id`),
+  CONSTRAINT `FK_time_table_details_3` FOREIGN KEY (`replacement_staff_id`) REFERENCES `staff_details` (`staff_id`),
+  CONSTRAINT `FK_time_table_details_2` FOREIGN KEY (`staff_id`) REFERENCES `staff_details` (`staff_id`),
+  CONSTRAINT `FK_time_table_details_class` FOREIGN KEY (`class_id`) REFERENCES `class_details` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cubeprov`.`time_table_details`
+--
+
+/*!40000 ALTER TABLE `time_table_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `time_table_details` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
