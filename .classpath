@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="lib"/>
+	<classpathentry kind="src" path="properties"/>
+	<classpathentry kind="src" path="xml"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="lib/catalina-ant.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/findbugs-ant.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jsp-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/servlet-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/axis.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/axis-ant.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/bsh-1.2b7.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-beanutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-chain-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-collections-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-dbcp-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-digester-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-discovery-0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-fileupload-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-io-1.3.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-lang-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-logging-1.0.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-pool-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-validator-1.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/displaytag-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/displaytag-export-poi-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/dwr.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/ehcache-1.2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/ejb.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/hibernate3.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/hibernate-annotations.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/iText-2.1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperserver-common-ws-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperserver-ireport-plugin-2.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/javassist-3.4.GA.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jaxen-1.1-beta-5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jaxrpc.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jcommon-1.0.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jfreechart-1.0.12.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jofc2-1.0-0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jta-1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jxl.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/log4j-1.2.15.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/mail-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/mysql-connector-java-5.1.7-bin.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/oro-2.0.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/oscache-2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/oscore-2.2.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/osworkflow-2.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/png-encoder-1.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/propertyset-1.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/quartz-all-1.6.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/saaj.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/slf4j-simple-1.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-beans.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-context.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-context-support.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-core.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-jdbc 2.5.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-tx.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/spring-web.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/standard-1.1.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/struts-core-1.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/struts-taglib-1.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/struts-tiles-1.3.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/wsdl4j-1.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/xalan.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/XmlSchema-1.0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/xstream-1.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/pduutils.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/smslib-3.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/smsserver-3.5.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/commons-httpclient-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperreports-3.6.2-20091111.113157-5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperreports-chart-themes-3.6.2-20091103.150124-2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperreports-fonts-3.6.2-20091028.101620-1.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/jasperreports-ofc-3.6.2-20091111.130517-2.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/groovy-all-1.5.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="WEB-INF/lib/antlr-2.7.2.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="output" path="WEB-INF/classes"/>
+</classpath>

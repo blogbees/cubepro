@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!-- 
+
+Description:
+
+This build file is intened to provide a simple way to tag, release, and deploy builds of Feedpapers product.
+It also includes tasks to check out the code based on a tag or release version number.
+
+
+Checkout a Tag'ed version
+=========================
+
+A directory is created based on the passed tag id for files to be checked out into.
+
+ant -f release.xml -Dtag=[tag id]
+
+
+Checkout a Branch'ed version
+============================
+
+A directory is created based on the passed branch id for files to be checked out into.
+
+ant -f release.xml -Dbranch=[branch id]
+
+
+Create a new Tag
+================
+
+Tagging should be done before each QA build (in fact it is enforced)
+
+ant -f release.xml tag -Dtag=[tag id]
+
+Where tag id is in the form BuildYYYYMMDD[a - z] where 'a - z' is the incremental tag that day. 
+For example 'Build20060719a' is the first tag on the 19th July 2006, and 'Build20060719c' would be
+the third.
+
+The result is a tag in the subversion 'tags' folder with all the code underneath from trunk.
+
+
+Remove an existing Tag
+======================
+
+This generally speaking should never be done....but in emergancies....it is here
+
+ant -f release.xml remove-tag -Dtag=[tag id]
+
+Create a new Branch
+==================
+
+Branching should only be done at the major release point of the development cycle. In other words
+when the code is ready to be pushed into production.
+
+ant -f release.xml branch -Dbranch=[brach id]
+
+Where branch id is the version number of the code base going into production.
+
+The result is a branch in the subversion 'branches' folder with all the code underneath.
+
+
+-->
+
+<project name="emuster-release" default="usage" basedir=".">
+	<property file="release.properties" />
+	<property name="svn.javahl" value="true"/>
+
+    <target name="usage">
+        <echo message=""/>
+        <echo message="$Release file"/>
+        <echo message="-----------------------------------"/>
+        <echo message="NOTE: A full description of tasks and usage is in the header comments of release.xml."/>
+        <echo message="Always check there for details if not sure on something."/>
+        <echo message=""/>
+        <echo message="Available targets are:"/>
+        <echo message=""/>
+        <echo message="tag     			--> Tag the code based on the passed tag id"/>
+        <echo message="remove-tag  		--> Delete a tag from 'tags' based on passed tag id"/>
+        <echo message="branch 			--> Branch the code based on the passed branch id"/>
+        <echo message="branch-checkout	--> Check out the code based on passed branch name"/>
+        <echo message="tag-checkout	    --> Check out the code based on passed tag name"/>
+        <echo message=""/>
+    </target>
+
+	<!-- ================================================================ -->
+	<!-- SVN tasks														  -->
+	<!-- ================================================================ -->
+
+    <typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnant.jar" />
+	<taskdef name="svn" classname="org.tigris.subversion.svnant.SvnTask"/>
+	<!-- svnant.jar, svnClientAdapter.jar, svnjavahl.jar -->
+	
+	<typedef resource="org/tigris/subversion/svnant/svnantlib.xml" classpath="svnant.jar" />
+
+    <target name="tag-checkout" description="Check out the code based on passed tag name">
+    	<echo message="Checking out code from 'tags' using ${tag}."/>
+    
+    	<mkdir dir="${tag}"/>
+    	
+    	<svn javahl="${svn.javahl}">
+    		<checkout url="${svn.base.url}/tags/${tag}" destPath="${tag}"/>
+    	</svn>
+    </target>
+    
+    <target name="branch-checkout" description="Check out the code based on passed branch name">
+    	<echo message="Checking out code from 'branches' using ${branch}."/>
+    	
+    	<mkdir dir="${branch}"/>
+    	
+    	<svn javahl="${svn.javahl}">
+    		<checkout url="${svn.base.url}/branches/${branch}" destPath="${branch}"/>
+    	</svn>
+    </target>
+    
+    <target name="tag" description="Tag the code based on the passed tag id">
+    	<echo message="Creating tag ${tag} in subversion 'tags' directory from code in trunk"/>
+    	
+    	<svn javahl="${svn.javahl}">
+    		<copy srcUrl="${svn.base.url}/trunk" destUrl="${svn.base.url}/tags/${tag}" message="Created ${tag}"/>
+    	</svn>
+    </target>
+    
+    <target name="remove-tag" description="Delete a tag from 'tags' based on passed tag id">  
+    	<echo message="Removing tag ${tag} in subversion 'tags' directory"/>
+    	
+    	<svn javahl="${svn.javahl}">
+    		<delete url="${svn.base.url}/tags/${tag}" message="Deleted ${tag}"/>
+    	</svn> 	
+    </target>
+    
+    <target name="branch" description="Branch the code based on the passed branch id">
+    	<echo message="Creating branch ${branch} in subversion 'branches' directory from code in trunk"/>
+    	
+    	<svn javahl="${svn.javahl}">
+    		<copy srcUrl="${svn.base.url}/trunk" destUrl="${svn.base.url}/branch/${branch}" message="Created ${branch}"/>
+    	</svn>
+    </target>
+
+</project>
